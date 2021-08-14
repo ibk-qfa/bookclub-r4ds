@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.10 The gg in {ggplot} | R for Data Science Book Club</title>
+  <title>3.6 Other function and features | R for Data Science Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.10 The gg in {ggplot} | R for Data Science Book Club" />
+  <meta property="og:title" content="3.6 Other function and features | R for Data Science Book Club" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="r4ds/bookclub-r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.10 The gg in {ggplot} | R for Data Science Book Club" />
+  <meta name="twitter:title" content="3.6 Other function and features | R for Data Science Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -24,16 +24,16 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2021-08-09" />
+<meta name="date" content="2021-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="coordinate-systems.html"/>
-<link rel="next" href="workflow-basics.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="common-problems.html"/>
+<link rel="next" href="to-summarize-the-gg-in-ggplot.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -152,15 +152,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> Data visualisation</a><ul>
 <li class="chapter" data-level="3.1" data-path="loading-packages-in-r.html"><a href="loading-packages-in-r.html"><i class="fa fa-check"></i><b>3.1</b> Loading Packages in R</a></li>
-<li class="chapter" data-level="3.2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>3.2</b> First Steps</a></li>
-<li class="chapter" data-level="3.3" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a></li>
-<li class="chapter" data-level="3.4" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
-<li class="chapter" data-level="3.5" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>3.5</b> Facets</a></li>
-<li class="chapter" data-level="3.6" data-path="geometries.html"><a href="geometries.html"><i class="fa fa-check"></i><b>3.6</b> Geometries</a></li>
-<li class="chapter" data-level="3.7" data-path="statistical-transformations.html"><a href="statistical-transformations.html"><i class="fa fa-check"></i><b>3.7</b> Statistical transformations</a></li>
-<li class="chapter" data-level="3.8" data-path="position-adjustments.html"><a href="position-adjustments.html"><i class="fa fa-check"></i><b>3.8</b> Position adjustments</a></li>
-<li class="chapter" data-level="3.9" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>3.9</b> Coordinate systems</a></li>
-<li class="chapter" data-level="3.10" data-path="the-gg-in-ggplot.html"><a href="the-gg-in-ggplot.html"><i class="fa fa-check"></i><b>3.10</b> The gg in {ggplot}</a></li>
+<li class="chapter" data-level="3.2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>3.2</b> First Steps</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="first-steps.html"><a href="first-steps.html#how-to-visualise-your-data-using-ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> How to visualise your data using ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="geometry.html"><a href="geometry.html"><i class="fa fa-check"></i><b>3.3</b> Geometry</a></li>
+<li class="chapter" data-level="3.4" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>3.4</b> Aesthetic mappings</a></li>
+<li class="chapter" data-level="3.5" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i><b>3.5</b> Common problems</a></li>
+<li class="chapter" data-level="3.6" data-path="other-function-and-features.html"><a href="other-function-and-features.html"><i class="fa fa-check"></i><b>3.6</b> Other function and features</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="other-function-and-features.html"><a href="other-function-and-features.html#facets"><i class="fa fa-check"></i><b>3.6.1</b> Facets</a></li>
+<li class="chapter" data-level="3.6.2" data-path="other-function-and-features.html"><a href="other-function-and-features.html#statistical-transformations"><i class="fa fa-check"></i><b>3.6.2</b> Statistical transformations</a></li>
+<li class="chapter" data-level="3.6.3" data-path="other-function-and-features.html"><a href="other-function-and-features.html#position-adjustments"><i class="fa fa-check"></i><b>3.6.3</b> Position adjustments</a></li>
+<li class="chapter" data-level="3.6.4" data-path="other-function-and-features.html"><a href="other-function-and-features.html#coordinate-systems"><i class="fa fa-check"></i><b>3.6.4</b> Coordinate systems</a></li>
+<li class="chapter" data-level="3.6.5" data-path="other-function-and-features.html"><a href="other-function-and-features.html#theme"><i class="fa fa-check"></i><b>3.6.5</b> Theme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html"><i class="fa fa-check"></i><b>3.7</b> To summarize: The gg in {ggplot}</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#exercises"><i class="fa fa-check"></i><b>3.7.1</b> Exercises:</a></li>
+<li class="chapter" data-level="3.7.2" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#resources"><i class="fa fa-check"></i><b>3.7.2</b> Resources:</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
 <li class="chapter" data-level="4.1" data-path="the-console-pane.html"><a href="the-console-pane.html"><i class="fa fa-check"></i><b>4.1</b> The Console Pane</a></li>
@@ -307,39 +315,124 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-gg-in-ggplot" class="section level2">
-<h2><span class="header-section-number">3.10</span> The gg in {ggplot}</h2>
-<p><code>{ggplot}</code> implements the “layered grammar of graphics.”</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="the-gg-in-ggplot.html#cb11-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb11-2"><a href="the-gg-in-ggplot.html#cb11-2"></a><span class="st">  </span><span class="er">&lt;</span>GEOM_FUNCTION<span class="op">&gt;</span>(</span>
-<span id="cb11-3"><a href="the-gg-in-ggplot.html#cb11-3"></a>     <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>),</span>
-<span id="cb11-4"><a href="the-gg-in-ggplot.html#cb11-4"></a>     <span class="dt">stat =</span> <span class="op">&lt;</span>STAT<span class="op">&gt;</span>, </span>
-<span id="cb11-5"><a href="the-gg-in-ggplot.html#cb11-5"></a>     <span class="dt">position =</span> <span class="op">&lt;</span>POSITION<span class="op">&gt;</span></span>
-<span id="cb11-6"><a href="the-gg-in-ggplot.html#cb11-6"></a><span class="st">  </span>) <span class="op">+</span></span>
-<span id="cb11-7"><a href="the-gg-in-ggplot.html#cb11-7"></a><span class="st">  </span><span class="er">&lt;</span>COORDINATE_FUNCTION<span class="op">&gt;</span><span class="st"> </span><span class="op">+</span></span>
-<span id="cb11-8"><a href="the-gg-in-ggplot.html#cb11-8"></a><span class="st">  </span><span class="er">&lt;</span>FACET_FUNCTION<span class="op">&gt;</span></span></code></pre></div>
+<div id="other-function-and-features" class="section level2">
+<h2><span class="header-section-number">3.6</span> Other function and features</h2>
 <ul>
-<li><code>ggplot(data = &lt;DATA&gt;)</code>: Set up a base plot with data.</li>
-<li><code>&lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))</code>: Add a geometry, such as a point (<code>geom_point()</code>).
-<ul>
-<li><code>mapping</code>: Map aesthetics (<code>x</code>, <code>y</code>) to variables from <code>data</code> (<code>displ</code>, <code>hwy</code>).</li>
-<li><code>stat</code>: How to transform the data.</li>
-<li><code>aes()</code>: A function to do the mapping. The name is short for “aesthetics.”</li>
-<li><code>position</code>: How to deal with things that overlap.</li>
-</ul></li>
-<li><code>&lt;COORDINATE_FUNCTION&gt;</code>: Adjust the coordinate layout.</li>
-<li><code>&lt;FACET_FUNCTION&gt;</code>: Break the plot up into small multiples.</li>
+<li>Facets</li>
+<li>Statistical transformations</li>
+<li>Position adjustments</li>
+<li>Coordinate systems</li>
+<li>Themes</li>
 </ul>
-
+<hr />
+<div id="facets" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> Facets</h3>
+<p>They never use this terminology, but…</p>
+<p>you can subgroup your visualization with a <code>facet_</code> function:</p>
+<p><strong>Small multiples:</strong> Multiple plots on the same axes comparing something across splits in a dataset</p>
+<p>There are 2 versions of this function in <code>ggplot2</code>:</p>
+<pre><code>facet_wrap() the variable that you pass to facet_wrap() should be discrete
+facet_grid() the formula should contain two variable names separated by a ~</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="other-function-and-features.html#cb15-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb15-2"><a href="other-function-and-features.html#cb15-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb15-3"><a href="other-function-and-features.html#cb15-3"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>class, <span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookclub-r4ds_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>You can either use <code>~</code> or <code>vars()</code></p>
+<hr />
 </div>
-<!-- </div> -->
+<div id="statistical-transformations" class="section level3">
+<h3><span class="header-section-number">3.6.2</span> Statistical transformations</h3>
+<ul>
+<li>Lots of geoms use transformed data. For example, <code>geom_bar(aes(x = cut))</code> calculates a count for each <code>cut</code>.</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="other-function-and-features.html#cb16-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> diamonds) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb16-2"><a href="other-function-and-features.html#cb16-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> cut))</span></code></pre></div>
+<p><img src="bookclub-r4ds_files/figure-html/counts-1.png" width="672" /></p>
+<ul>
+<li><code>stat_*()</code> functions do this calculation.</li>
+<li><code>?stat_count</code> (etc) has a <strong>Computer variables</strong> section that tells you what that stat computes.</li>
+<li>You can use these computed variables to make fancier plots.</li>
+</ul>
+<hr />
+</div>
+<div id="position-adjustments" class="section level3">
+<h3><span class="header-section-number">3.6.3</span> Position adjustments</h3>
+<ul>
+<li>Geoms have a <code>position</code> argument to tell it how to deal with things that go on top of one another.
+<ul>
+<li>Sample values include “stack”, “identity”, “fill”, “dodge”, and “jitter”.</li>
+</ul></li>
+<li><code>geom_jitter()</code> is a shortcut for <code>geom_point(position = "jitter")</code> because it’s super useful.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="other-function-and-features.html#cb17-1"></a>dat &lt;-<span class="st"> </span><span class="kw">tibble</span>(</span>
+<span id="cb17-2"><a href="other-function-and-features.html#cb17-2"></a>  <span class="dt">x =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb17-3"><a href="other-function-and-features.html#cb17-3"></a>  <span class="dt">y =</span> <span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb17-4"><a href="other-function-and-features.html#cb17-4"></a>)</span>
+<span id="cb17-5"><a href="other-function-and-features.html#cb17-5"></a><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
+<span id="cb17-6"><a href="other-function-and-features.html#cb17-6"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="bookclub-r4ds_files/figure-html/jitter-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="other-function-and-features.html#cb18-1"></a><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
+<span id="cb18-2"><a href="other-function-and-features.html#cb18-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>()</span></code></pre></div>
+<p><img src="bookclub-r4ds_files/figure-html/jitter-2.png" width="672" /></p>
+<ul>
+<li>Use <code>width</code> and <code>height</code> arguments of <code>geom_jitter</code> to more specifically specify range.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="other-function-and-features.html#cb19-1"></a><span class="kw">ggplot</span>(dat, <span class="kw">aes</span>(x, y)) <span class="op">+</span></span>
+<span id="cb19-2"><a href="other-function-and-features.html#cb19-2"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="bookclub-r4ds_files/figure-html/jitter2-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="coordinate-systems" class="section level3">
+<h3><span class="header-section-number">3.6.4</span> Coordinate systems</h3>
+<p>Add Coordinate systems to your <code>ggplot</code> with:</p>
+<pre><code>coord_flip()
+coord_quickmap()
+coord_polar()
+coord_fixed()</code></pre>
+<p>By default, <code>{ggplot}</code> uses <code>coord_cartesian()</code> but you can add other functions:</p>
+<ul>
+<li><code>coord_flip()</code> can be useful to quickly flip orientations (although this is less necessary in modern <code>{ggplot}</code> than when this book was written; now there’s an “orientation” argument that is usually guessed properly if you leave it blank)</li>
+<li><code>coord_quickmap()</code> does proper transformations to work with lat/long data.</li>
+<li><code>coord_polar()</code> for circular plots, which are almost always a bad idea but they tend to look cool</li>
+<li><code>coord_fixed()</code> set the same limits to both axis</li>
+</ul>
+<hr />
+</div>
+<div id="theme" class="section level3">
+<h3><span class="header-section-number">3.6.5</span> Theme</h3>
+<p>Once your data are imported, tidied and transformed adeguately for obtaing desired visualization you can start setting up a plot with extra features:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="other-function-and-features.html#cb21-1"></a>?theme</span></code></pre></div>
+<p>It is possible to add a <code>theme()</code> function to your <code>ggplot</code>, this is done to customize the non-data components of your plots:</p>
+<ul>
+<li>titles</li>
+<li>labels</li>
+<li>fonts</li>
+<li>background</li>
+<li>gridlines</li>
+<li>legends</li>
+<li>…</li>
+</ul>
+<p>For example if you would like to customize the background of your plot:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="other-function-and-features.html#cb22-1"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb22-2"><a href="other-function-and-features.html#cb22-2"></a><span class="st">  </span><span class="kw">geom_blank</span>() <span class="op">+</span></span>
+<span id="cb22-3"><a href="other-function-and-features.html#cb22-3"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">fill =</span> <span class="st">&quot;gold&quot;</span>),</span>
+<span id="cb22-4"><a href="other-function-and-features.html#cb22-4"></a>        <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">fill =</span> <span class="st">&quot;darkblue&quot;</span>))</span></code></pre></div>
+<p><img src="bookclub-r4ds_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Or you can customize a <code>theme_</code>, there are many different themes provided by defauld by <code>ggplo2</code> such as:</p>
+<pre><code>theme_classic()
+theme_minimal()
+theme_void()</code></pre>
+<p>just to name a few, those function then can be further customize by adding the <code>theme</code> customization function.</p>
+<hr />
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="coordinate-systems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="common-problems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="to-summarize-the-gg-in-ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -383,6 +476,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }

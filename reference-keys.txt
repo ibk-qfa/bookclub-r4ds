@@ -1,3 +1,4 @@
+fig:unnamed-chunk-1
 introduction-preface
 a-typical-data-science-project
 the-order-of-content-in-this-book
@@ -9,14 +10,19 @@ introduction
 data-visualisation
 loading-packages-in-r
 first-steps
+how-to-visualise-your-data-using-ggplot2
+geometry
 aesthetic-mappings
 common-problems
+other-function-and-features
 facets
-geometries
 statistical-transformations
 position-adjustments
 coordinate-systems
-the-gg-in-ggplot
+theme
+to-summarize-the-gg-in-ggplot
+exercises
+resources
 workflow-basics
 the-console-pane
 naming-things

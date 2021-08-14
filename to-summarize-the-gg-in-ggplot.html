@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.5 Facets | R for Data Science Book Club</title>
+  <title>3.7 To summarize: The gg in {ggplot} | R for Data Science Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.5 Facets | R for Data Science Book Club" />
+  <meta property="og:title" content="3.7 To summarize: The gg in {ggplot} | R for Data Science Book Club" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="r4ds/bookclub-r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.5 Facets | R for Data Science Book Club" />
+  <meta name="twitter:title" content="3.7 To summarize: The gg in {ggplot} | R for Data Science Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -24,16 +24,16 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2021-08-09" />
+<meta name="date" content="2021-08-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="common-problems.html"/>
-<link rel="next" href="geometries.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="prev" href="other-function-and-features.html"/>
+<link rel="next" href="workflow-basics.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -152,15 +152,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> Data visualisation</a><ul>
 <li class="chapter" data-level="3.1" data-path="loading-packages-in-r.html"><a href="loading-packages-in-r.html"><i class="fa fa-check"></i><b>3.1</b> Loading Packages in R</a></li>
-<li class="chapter" data-level="3.2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>3.2</b> First Steps</a></li>
-<li class="chapter" data-level="3.3" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a></li>
-<li class="chapter" data-level="3.4" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
-<li class="chapter" data-level="3.5" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i><b>3.5</b> Facets</a></li>
-<li class="chapter" data-level="3.6" data-path="geometries.html"><a href="geometries.html"><i class="fa fa-check"></i><b>3.6</b> Geometries</a></li>
-<li class="chapter" data-level="3.7" data-path="statistical-transformations.html"><a href="statistical-transformations.html"><i class="fa fa-check"></i><b>3.7</b> Statistical transformations</a></li>
-<li class="chapter" data-level="3.8" data-path="position-adjustments.html"><a href="position-adjustments.html"><i class="fa fa-check"></i><b>3.8</b> Position adjustments</a></li>
-<li class="chapter" data-level="3.9" data-path="coordinate-systems.html"><a href="coordinate-systems.html"><i class="fa fa-check"></i><b>3.9</b> Coordinate systems</a></li>
-<li class="chapter" data-level="3.10" data-path="the-gg-in-ggplot.html"><a href="the-gg-in-ggplot.html"><i class="fa fa-check"></i><b>3.10</b> The gg in {ggplot}</a></li>
+<li class="chapter" data-level="3.2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>3.2</b> First Steps</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="first-steps.html"><a href="first-steps.html#how-to-visualise-your-data-using-ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> How to visualise your data using ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="geometry.html"><a href="geometry.html"><i class="fa fa-check"></i><b>3.3</b> Geometry</a></li>
+<li class="chapter" data-level="3.4" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>3.4</b> Aesthetic mappings</a></li>
+<li class="chapter" data-level="3.5" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i><b>3.5</b> Common problems</a></li>
+<li class="chapter" data-level="3.6" data-path="other-function-and-features.html"><a href="other-function-and-features.html"><i class="fa fa-check"></i><b>3.6</b> Other function and features</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="other-function-and-features.html"><a href="other-function-and-features.html#facets"><i class="fa fa-check"></i><b>3.6.1</b> Facets</a></li>
+<li class="chapter" data-level="3.6.2" data-path="other-function-and-features.html"><a href="other-function-and-features.html#statistical-transformations"><i class="fa fa-check"></i><b>3.6.2</b> Statistical transformations</a></li>
+<li class="chapter" data-level="3.6.3" data-path="other-function-and-features.html"><a href="other-function-and-features.html#position-adjustments"><i class="fa fa-check"></i><b>3.6.3</b> Position adjustments</a></li>
+<li class="chapter" data-level="3.6.4" data-path="other-function-and-features.html"><a href="other-function-and-features.html#coordinate-systems"><i class="fa fa-check"></i><b>3.6.4</b> Coordinate systems</a></li>
+<li class="chapter" data-level="3.6.5" data-path="other-function-and-features.html"><a href="other-function-and-features.html#theme"><i class="fa fa-check"></i><b>3.6.5</b> Theme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html"><i class="fa fa-check"></i><b>3.7</b> To summarize: The gg in {ggplot}</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#exercises"><i class="fa fa-check"></i><b>3.7.1</b> Exercises:</a></li>
+<li class="chapter" data-level="3.7.2" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#resources"><i class="fa fa-check"></i><b>3.7.2</b> Resources:</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
 <li class="chapter" data-level="4.1" data-path="the-console-pane.html"><a href="the-console-pane.html"><i class="fa fa-check"></i><b>4.1</b> The Console Pane</a></li>
@@ -307,28 +315,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="facets" class="section level2">
-<h2><span class="header-section-number">3.5</span> Facets</h2>
-<p>They never use this terminology, but…</p>
+<div id="to-summarize-the-gg-in-ggplot" class="section level2">
+<h2><span class="header-section-number">3.7</span> To summarize: The gg in {ggplot}</h2>
+<p><code>{ggplot}</code> implements the “layered grammar of graphics.”</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="to-summarize-the-gg-in-ggplot.html#cb24-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="op">&lt;</span>DATA<span class="op">&gt;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb24-2"><a href="to-summarize-the-gg-in-ggplot.html#cb24-2"></a><span class="st">  </span><span class="er">&lt;</span>GEOM_FUNCTION<span class="op">&gt;</span>(</span>
+<span id="cb24-3"><a href="to-summarize-the-gg-in-ggplot.html#cb24-3"></a>     <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="op">&lt;</span>MAPPINGS<span class="op">&gt;</span>),</span>
+<span id="cb24-4"><a href="to-summarize-the-gg-in-ggplot.html#cb24-4"></a>     <span class="dt">stat =</span> <span class="op">&lt;</span>STAT<span class="op">&gt;</span>, </span>
+<span id="cb24-5"><a href="to-summarize-the-gg-in-ggplot.html#cb24-5"></a>     <span class="dt">position =</span> <span class="op">&lt;</span>POSITION<span class="op">&gt;</span></span>
+<span id="cb24-6"><a href="to-summarize-the-gg-in-ggplot.html#cb24-6"></a><span class="st">  </span>) <span class="op">+</span></span>
+<span id="cb24-7"><a href="to-summarize-the-gg-in-ggplot.html#cb24-7"></a><span class="st">  </span><span class="er">&lt;</span>COORDINATE_FUNCTION<span class="op">&gt;</span><span class="st"> </span><span class="op">+</span></span>
+<span id="cb24-8"><a href="to-summarize-the-gg-in-ggplot.html#cb24-8"></a><span class="st">  </span><span class="er">&lt;</span>FACET_FUNCTION<span class="op">&gt;</span><span class="st"> </span><span class="op">+</span></span>
+<span id="cb24-9"><a href="to-summarize-the-gg-in-ggplot.html#cb24-9"></a><span class="st">  </span><span class="er">&lt;</span>THEME_FUNCTION<span class="op">&gt;</span><span class="st"> </span><span class="op">+</span></span>
+<span id="cb24-10"><a href="to-summarize-the-gg-in-ggplot.html#cb24-10"></a><span class="st">  </span><span class="kw">theme</span>()</span></code></pre></div>
 <ul>
-<li><strong>Small multiples:</strong> Multiple plots on the same axes comparing something across splits in a dataset.</li>
-<li>2 versions of these in ggplot2:
+<li><code>ggplot(data = &lt;DATA&gt;)</code>: Set up a base plot with data.</li>
+<li><code>&lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;))</code>: Add a geometry, such as a point (<code>geom_point()</code>).
 <ul>
-<li><code>facet_wrap()</code>: Facet by a variable or variables, arrange in order, wrap at the end of the line.</li>
-<li><code>facet_grid()</code>: Facet by exactly 2 variables, showing all combinations of those 2 variables (only use this for discrete variables)</li>
-<li>Old way (“formula interface,” in the book): <code>facet_wrap(~ class)</code> or <code>facet_grid(drv ~ cyl)</code></li>
-<li>New way (simpler?): <code>facet_wrap(vars(class))</code> or <code>facet_grid(vars(drv), vars(cyl))</code></li>
-<li>Either way works, do what makes sense to you.</li>
+<li><code>mapping</code>: Map aesthetics (<code>x</code>, <code>y</code>) to variables from <code>data</code> (<code>displ</code>, <code>hwy</code>).</li>
+<li><code>stat</code>: How to transform the data.</li>
+<li><code>aes()</code>: A function to do the mapping. The name is short for “aesthetics.”</li>
+<li><code>position</code>: How to deal with things that overlap.</li>
 </ul></li>
+<li><code>&lt;COORDINATE_FUNCTION&gt;</code>: Adjust the coordinate layout.</li>
+<li><code>&lt;FACET_FUNCTION&gt;</code>: Break the plot up into small multiples.</li>
 </ul>
+<p>In addition it is possible to subset data inside the <code>ggplot()</code> function or inside the <code>&lt;GEOM_FUNCTION&gt;()</code>:</p>
+<pre><code>ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth(data = filter(mpg, class == &quot;subcompact&quot;), se = FALSE)</code></pre>
+<hr />
+<p><a href="https://r4ds.had.co.nz/data-visualisation.html">R4DS book</a></p>
+<div id="exercises" class="section level3">
+<h3><span class="header-section-number">3.7.1</span> Exercises:</h3>
+<p><a href="https://jrnold.github.io/r4ds-exercise-solutions/">R for Data Science: Exercise Solutions</a></p>
 </div>
+<div id="resources" class="section level3">
+<h3><span class="header-section-number">3.7.2</span> Resources:</h3>
+<ul>
+<li><a href="http://vita.had.co.nz/papers/layered-grammar.pdf">A Layered Grammar of Graphics</a></li>
+<li><a href="https://cran.r-project.org/web/packages/ggplot2/index.html">{ggplot2}</a></li>
+<li><a href="https://exts.ggplot2.tidyverse.org/gallery/">ggplot2 extensions - gallery</a></li>
+<li><a href="https://r-graphics.org/">R Graphics Cookbook</a></li>
+</ul>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="common-problems.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="geometries.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="other-function-and-features.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="workflow-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -372,6 +412,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section"
 }
