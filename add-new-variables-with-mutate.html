@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.6 Add new variables with mutate() | R for Data Science Book Club</title>
+  <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.6 Add new variables with mutate() | R for Data Science Book Club" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="github-repo" content="r4ds/bookclub-r4ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.6 Add new variables with mutate() | R for Data Science Book Club" />
+  
+  <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  
+
+<meta name="author" content="The R4DS Online Learning Community" />
+
+
+<meta name="date" content="2021-08-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="select-columns-with-select.html"/>
+<link rel="next" href="grouped-summaries-with-summarize.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for Data Science Book Club</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction-preface.html"><a href="introduction-preface.html"><i class="fa fa-check"></i><b>1</b> Introduction (Preface)</a><ul>
+<li class="chapter" data-level="1.1" data-path="a-typical-data-science-project.html"><a href="a-typical-data-science-project.html"><i class="fa fa-check"></i><b>1.1</b> A typical data science project</a></li>
+<li class="chapter" data-level="1.2" data-path="the-order-of-content-in-this-book.html"><a href="the-order-of-content-in-this-book.html"><i class="fa fa-check"></i><b>1.2</b> The order of content in this book</a></li>
+<li class="chapter" data-level="1.3" data-path="not-covered-by-this-book.html"><a href="not-covered-by-this-book.html"><i class="fa fa-check"></i><b>1.3</b> Not covered by this book</a></li>
+<li class="chapter" data-level="1.4" data-path="setting-up-an-environment.html"><a href="setting-up-an-environment.html"><i class="fa fa-check"></i><b>1.4</b> Setting up an environment</a></li>
+<li class="chapter" data-level="1.5" data-path="running-r-code.html"><a href="running-r-code.html"><i class="fa fa-check"></i><b>1.5</b> Running R code</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.6</b> Getting help</a></li>
+</ul></li>
+<li class="part"><span><b>I Explore</b></span></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> Data visualisation</a><ul>
+<li class="chapter" data-level="3.1" data-path="loading-packages-in-r.html"><a href="loading-packages-in-r.html"><i class="fa fa-check"></i><b>3.1</b> Loading Packages in R</a></li>
+<li class="chapter" data-level="3.2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>3.2</b> First Steps</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="first-steps.html"><a href="first-steps.html#how-to-visualise-your-data-using-ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> How to visualise your data using ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="geometry.html"><a href="geometry.html"><i class="fa fa-check"></i><b>3.3</b> Geometry</a></li>
+<li class="chapter" data-level="3.4" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>3.4</b> Aesthetic mappings</a></li>
+<li class="chapter" data-level="3.5" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i><b>3.5</b> Common problems</a></li>
+<li class="chapter" data-level="3.6" data-path="other-function-and-features.html"><a href="other-function-and-features.html"><i class="fa fa-check"></i><b>3.6</b> Other function and features</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="other-function-and-features.html"><a href="other-function-and-features.html#facets"><i class="fa fa-check"></i><b>3.6.1</b> Facets</a></li>
+<li class="chapter" data-level="3.6.2" data-path="other-function-and-features.html"><a href="other-function-and-features.html#statistical-transformations"><i class="fa fa-check"></i><b>3.6.2</b> Statistical transformations</a></li>
+<li class="chapter" data-level="3.6.3" data-path="other-function-and-features.html"><a href="other-function-and-features.html#position-adjustments"><i class="fa fa-check"></i><b>3.6.3</b> Position adjustments</a></li>
+<li class="chapter" data-level="3.6.4" data-path="other-function-and-features.html"><a href="other-function-and-features.html#coordinate-systems"><i class="fa fa-check"></i><b>3.6.4</b> Coordinate systems</a></li>
+<li class="chapter" data-level="3.6.5" data-path="other-function-and-features.html"><a href="other-function-and-features.html#theme"><i class="fa fa-check"></i><b>3.6.5</b> Theme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html"><i class="fa fa-check"></i><b>3.7</b> To summarize: The gg in {ggplot}</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#exercises"><i class="fa fa-check"></i><b>3.7.1</b> Exercises:</a></li>
+<li class="chapter" data-level="3.7.2" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#resources"><i class="fa fa-check"></i><b>3.7.2</b> Resources:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-console-pane.html"><a href="the-console-pane.html"><i class="fa fa-check"></i><b>4.1</b> The Console Pane</a></li>
+<li class="chapter" data-level="" data-path="the-script-pane.html"><a href="the-script-pane.html"><i class="fa fa-check"></i>The Script Pane</a></li>
+<li class="chapter" data-level="" data-path="the-environment-pane.html"><a href="the-environment-pane.html"><i class="fa fa-check"></i>The Environment Pane</a></li>
+<li class="chapter" data-level="" data-path="the-other-pane.html"><a href="the-other-pane.html"><i class="fa fa-check"></i>The Other Pane</a></li>
+<li class="chapter" data-level="" data-path="using-the-console.html"><a href="using-the-console.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="using-the-console-1.html"><a href="using-the-console-1.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="using-the-console-2.html"><a href="using-the-console-2.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="using-the-console-3.html"><a href="using-the-console-3.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="assigning-names.html"><a href="assigning-names.html"><i class="fa fa-check"></i>Assigning Names</a></li>
+<li class="chapter" data-level="" data-path="assigning-and-printing.html"><a href="assigning-and-printing.html"><i class="fa fa-check"></i>Assigning and Printing</a></li>
+<li class="chapter" data-level="" data-path="pronouncing-code.html"><a href="pronouncing-code.html"><i class="fa fa-check"></i>Pronouncing Code</a></li>
+<li class="chapter" data-level="4.2" data-path="naming-things.html"><a href="naming-things.html"><i class="fa fa-check"></i><b>4.2</b> Naming Things</a></li>
+<li class="chapter" data-level="4.3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4.3</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i>Functions</a></li>
+<li class="chapter" data-level="" data-path="other-rstudio-features.html"><a href="other-rstudio-features.html"><i class="fa fa-check"></i>Other RStudio Features</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>5</b> Data transformation</a><ul>
+<li class="chapter" data-level="5.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-1.html"><a href="introduction-1.html#prerequisites"><i class="fa fa-check"></i><b>5.1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-1.html"><a href="introduction-1.html#nycflights13"><i class="fa fa-check"></i><b>5.1.2</b> nycflights13</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="comparisons-and-logical-operators.html"><a href="comparisons-and-logical-operators.html"><i class="fa fa-check"></i><b>5.2</b> Comparisons and logical operators</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="comparisons-and-logical-operators.html"><a href="comparisons-and-logical-operators.html#comparisons"><i class="fa fa-check"></i><b>5.2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="5.2.2" data-path="comparisons-and-logical-operators.html"><a href="comparisons-and-logical-operators.html#logical-operators"><i class="fa fa-check"></i><b>5.2.2</b> Logical operators</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="filter-rows-with-filter.html"><a href="filter-rows-with-filter.html"><i class="fa fa-check"></i><b>5.3</b> Filter rows with filter()</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="filter-rows-with-filter.html"><a href="filter-rows-with-filter.html#missing-values"><i class="fa fa-check"></i><b>5.3.1</b> Missing values</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="arrange-rows-with-arrange.html"><a href="arrange-rows-with-arrange.html"><i class="fa fa-check"></i><b>5.4</b> Arrange rows with arrange()</a></li>
+<li class="chapter" data-level="5.5" data-path="select-columns-with-select.html"><a href="select-columns-with-select.html"><i class="fa fa-check"></i><b>5.5</b> Select columns with select()</a></li>
+<li class="chapter" data-level="5.6" data-path="add-new-variables-with-mutate.html"><a href="add-new-variables-with-mutate.html"><i class="fa fa-check"></i><b>5.6</b> Add new variables with mutate()</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="add-new-variables-with-mutate.html"><a href="add-new-variables-with-mutate.html#useful-creation-functions"><i class="fa fa-check"></i><b>5.6.1</b> Useful creation functions</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html"><i class="fa fa-check"></i><b>5.7</b> Grouped summaries with summarize()</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#combining-multiple-operations-with-the-pipe"><i class="fa fa-check"></i><b>5.7.1</b> Combining multiple operations with the pipe</a></li>
+<li class="chapter" data-level="5.7.2" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#counts"><i class="fa fa-check"></i><b>5.7.2</b> Counts</a></li>
+<li class="chapter" data-level="5.7.3" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#useful-summary-functions"><i class="fa fa-check"></i><b>5.7.3</b> Useful summary functions</a></li>
+<li class="chapter" data-level="5.7.4" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>5.7.4</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="5.7.5" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#ungrouping"><i class="fa fa-check"></i><b>5.7.5</b> Ungrouping</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="grouped-mutates-and-filters.html"><a href="grouped-mutates-and-filters.html"><i class="fa fa-check"></i><b>5.8</b> Grouped mutates (and filters)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a></li>
+<li class="chapter" data-level="7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="overall-vocabulary.html"><a href="overall-vocabulary.html"><i class="fa fa-check"></i><b>7.2</b> Overall Vocabulary</a></li>
+<li class="chapter" data-level="7.3" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>7.3</b> Variation</a></li>
+<li class="chapter" data-level="7.4" data-path="missing-values-1.html"><a href="missing-values-1.html"><i class="fa fa-check"></i><b>7.4</b> Missing values</a></li>
+<li class="chapter" data-level="7.5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>7.5</b> Covariation</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous"><i class="fa fa-check"></i><b>7.5.1</b> categorical + continuous</a></li>
+<li class="chapter" data-level="7.5.2" data-path="covariation.html"><a href="covariation.html#categorical-categorical"><i class="fa fa-check"></i><b>7.5.2</b> categorical + categorical</a></li>
+<li class="chapter" data-level="7.5.3" data-path="covariation.html"><a href="covariation.html#continuous-continuous"><i class="fa fa-check"></i><b>7.5.3</b> continuous + continuous</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="finding-patterns.html"><a href="finding-patterns.html"><i class="fa fa-check"></i><b>7.6</b> Finding Patterns</a></li>
+<li class="chapter" data-level="7.7" data-path="simplified-ggplot2.html"><a href="simplified-ggplot2.html"><i class="fa fa-check"></i><b>7.7</b> Simplified ggplot2</a></li>
+<li class="chapter" data-level="7.8" data-path="learning-more.html"><a href="learning-more.html"><i class="fa fa-check"></i><b>7.8</b> Learning More</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="workflow-projects.html"><a href="workflow-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: projects</a><ul>
+<li class="chapter" data-level="8.1" data-path="slide-1.html"><a href="slide-1.html"><i class="fa fa-check"></i><b>8.1</b> Slide 1</a></li>
+<li class="chapter" data-level="8.2" data-path="slide-2.html"><a href="slide-2.html"><i class="fa fa-check"></i><b>8.2</b> Slide 2</a></li>
+</ul></li>
+<li class="part"><span><b>II Wrangle</b></span></li>
+<li class="chapter" data-level="9" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>9</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1" data-path="slide-1-1.html"><a href="slide-1-1.html"><i class="fa fa-check"></i><b>9.1</b> Slide 1</a></li>
+<li class="chapter" data-level="9.2" data-path="slide-2-1.html"><a href="slide-2-1.html"><i class="fa fa-check"></i><b>9.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tibbles.html"><a href="tibbles.html"><i class="fa fa-check"></i><b>10</b> Tibbles</a><ul>
+<li class="chapter" data-level="10.1" data-path="slide-1-2.html"><a href="slide-1-2.html"><i class="fa fa-check"></i><b>10.1</b> Slide 1</a></li>
+<li class="chapter" data-level="10.2" data-path="slide-2-2.html"><a href="slide-2-2.html"><i class="fa fa-check"></i><b>10.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>11</b> Data import</a><ul>
+<li class="chapter" data-level="11.1" data-path="slide-1-3.html"><a href="slide-1-3.html"><i class="fa fa-check"></i><b>11.1</b> Slide 1</a></li>
+<li class="chapter" data-level="11.2" data-path="slide-2-3.html"><a href="slide-2-3.html"><i class="fa fa-check"></i><b>11.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>12</b> Tidy data</a><ul>
+<li class="chapter" data-level="12.1" data-path="slide-1-4.html"><a href="slide-1-4.html"><i class="fa fa-check"></i><b>12.1</b> Slide 1</a></li>
+<li class="chapter" data-level="12.2" data-path="slide-2-4.html"><a href="slide-2-4.html"><i class="fa fa-check"></i><b>12.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>13</b> Relational data</a><ul>
+<li class="chapter" data-level="13.1" data-path="slide-1-5.html"><a href="slide-1-5.html"><i class="fa fa-check"></i><b>13.1</b> Slide 1</a></li>
+<li class="chapter" data-level="13.2" data-path="slide-2-5.html"><a href="slide-2-5.html"><i class="fa fa-check"></i><b>13.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>14</b> Strings</a><ul>
+<li class="chapter" data-level="14.1" data-path="slide-1-6.html"><a href="slide-1-6.html"><i class="fa fa-check"></i><b>14.1</b> Slide 1</a></li>
+<li class="chapter" data-level="14.2" data-path="slide-2-6.html"><a href="slide-2-6.html"><i class="fa fa-check"></i><b>14.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> Factors</a><ul>
+<li class="chapter" data-level="15.1" data-path="slide-1-7.html"><a href="slide-1-7.html"><i class="fa fa-check"></i><b>15.1</b> Slide 1</a></li>
+<li class="chapter" data-level="15.2" data-path="slide-2-7.html"><a href="slide-2-7.html"><i class="fa fa-check"></i><b>15.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>16</b> Dates and times</a><ul>
+<li class="chapter" data-level="16.1" data-path="slide-1-8.html"><a href="slide-1-8.html"><i class="fa fa-check"></i><b>16.1</b> Slide 1</a></li>
+<li class="chapter" data-level="16.2" data-path="slide-2-8.html"><a href="slide-2-8.html"><i class="fa fa-check"></i><b>16.2</b> Slide 2</a></li>
+</ul></li>
+<li class="part"><span><b>III Program</b></span></li>
+<li class="chapter" data-level="17" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>17</b> Introduction</a><ul>
+<li class="chapter" data-level="17.1" data-path="slide-1-9.html"><a href="slide-1-9.html"><i class="fa fa-check"></i><b>17.1</b> Slide 1</a></li>
+<li class="chapter" data-level="17.2" data-path="slide-2-9.html"><a href="slide-2-9.html"><i class="fa fa-check"></i><b>17.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>18</b> Pipes</a><ul>
+<li class="chapter" data-level="18.1" data-path="slide-1-10.html"><a href="slide-1-10.html"><i class="fa fa-check"></i><b>18.1</b> Slide 1</a></li>
+<li class="chapter" data-level="18.2" data-path="slide-2-10.html"><a href="slide-2-10.html"><i class="fa fa-check"></i><b>18.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="functions-2.html"><a href="functions-2.html"><i class="fa fa-check"></i><b>19</b> Functions</a><ul>
+<li class="chapter" data-level="19.1" data-path="slide-1-11.html"><a href="slide-1-11.html"><i class="fa fa-check"></i><b>19.1</b> Slide 1</a></li>
+<li class="chapter" data-level="19.2" data-path="slide-2-11.html"><a href="slide-2-11.html"><i class="fa fa-check"></i><b>19.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>20</b> Vectors</a><ul>
+<li class="chapter" data-level="20.1" data-path="slide-1-12.html"><a href="slide-1-12.html"><i class="fa fa-check"></i><b>20.1</b> Slide 1</a></li>
+<li class="chapter" data-level="20.2" data-path="slide-2-12.html"><a href="slide-2-12.html"><i class="fa fa-check"></i><b>20.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>21</b> Iteration</a><ul>
+<li class="chapter" data-level="21.1" data-path="slide-1-13.html"><a href="slide-1-13.html"><i class="fa fa-check"></i><b>21.1</b> Slide 1</a></li>
+<li class="chapter" data-level="21.2" data-path="slide-2-13.html"><a href="slide-2-13.html"><i class="fa fa-check"></i><b>21.2</b> Slide 2</a></li>
+</ul></li>
+<li class="part"><span><b>IV Model</b></span></li>
+<li class="chapter" data-level="22" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>22</b> Introduction</a><ul>
+<li class="chapter" data-level="22.1" data-path="slide-1-14.html"><a href="slide-1-14.html"><i class="fa fa-check"></i><b>22.1</b> Slide 1</a></li>
+<li class="chapter" data-level="22.2" data-path="slide-2-14.html"><a href="slide-2-14.html"><i class="fa fa-check"></i><b>22.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="model-basics.html"><a href="model-basics.html"><i class="fa fa-check"></i><b>23</b> Model basics</a><ul>
+<li class="chapter" data-level="23.1" data-path="slide-1-15.html"><a href="slide-1-15.html"><i class="fa fa-check"></i><b>23.1</b> Slide 1</a></li>
+<li class="chapter" data-level="23.2" data-path="slide-2-15.html"><a href="slide-2-15.html"><i class="fa fa-check"></i><b>23.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="model-building.html"><a href="model-building.html"><i class="fa fa-check"></i><b>24</b> Model building</a><ul>
+<li class="chapter" data-level="24.1" data-path="slide-1-16.html"><a href="slide-1-16.html"><i class="fa fa-check"></i><b>24.1</b> Slide 1</a></li>
+<li class="chapter" data-level="24.2" data-path="slide-2-16.html"><a href="slide-2-16.html"><i class="fa fa-check"></i><b>24.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="many-models.html"><a href="many-models.html"><i class="fa fa-check"></i><b>25</b> Many models</a><ul>
+<li class="chapter" data-level="25.1" data-path="slide-1-17.html"><a href="slide-1-17.html"><i class="fa fa-check"></i><b>25.1</b> Slide 1</a></li>
+<li class="chapter" data-level="25.2" data-path="slide-2-17.html"><a href="slide-2-17.html"><i class="fa fa-check"></i><b>25.2</b> Slide 2</a></li>
+</ul></li>
+<li class="part"><span><b>V Communicate</b></span></li>
+<li class="chapter" data-level="26" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>26</b> Introduction</a><ul>
+<li class="chapter" data-level="26.1" data-path="slide-1-18.html"><a href="slide-1-18.html"><i class="fa fa-check"></i><b>26.1</b> Slide 1</a></li>
+<li class="chapter" data-level="26.2" data-path="slide-2-18.html"><a href="slide-2-18.html"><i class="fa fa-check"></i><b>26.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>27</b> R Markdown</a><ul>
+<li class="chapter" data-level="27.1" data-path="slide-1-19.html"><a href="slide-1-19.html"><i class="fa fa-check"></i><b>27.1</b> Slide 1</a></li>
+<li class="chapter" data-level="27.2" data-path="slide-2-19.html"><a href="slide-2-19.html"><i class="fa fa-check"></i><b>27.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>28</b> Graphics for communication</a><ul>
+<li class="chapter" data-level="28.1" data-path="slide-1-20.html"><a href="slide-1-20.html"><i class="fa fa-check"></i><b>28.1</b> Slide 1</a></li>
+<li class="chapter" data-level="28.2" data-path="slide-2-20.html"><a href="slide-2-20.html"><i class="fa fa-check"></i><b>28.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="r-markdown-formats.html"><a href="r-markdown-formats.html"><i class="fa fa-check"></i><b>29</b> R Markdown formats</a><ul>
+<li class="chapter" data-level="29.1" data-path="slide-1-21.html"><a href="slide-1-21.html"><i class="fa fa-check"></i><b>29.1</b> Slide 1</a></li>
+<li class="chapter" data-level="29.2" data-path="slide-2-21.html"><a href="slide-2-21.html"><i class="fa fa-check"></i><b>29.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="r-markdown-workflow.html"><a href="r-markdown-workflow.html"><i class="fa fa-check"></i><b>30</b> R Markdown workflow</a><ul>
+<li class="chapter" data-level="30.1" data-path="slide-1-22.html"><a href="slide-1-22.html"><i class="fa fa-check"></i><b>30.1</b> Slide 1</a></li>
+<li class="chapter" data-level="30.2" data-path="slide-2-22.html"><a href="slide-2-22.html"><i class="fa fa-check"></i><b>30.2</b> Slide 2</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science Book Club</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="add-new-variables-with-mutate" class="section level2">
+<h2><span class="header-section-number">5.6</span> Add new variables with mutate()</h2>
+<p><code>mutate()</code> adds new columns based on values from existing columns. Data frame includes existing and new columns.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="add-new-variables-with-mutate.html#cb132-1"></a><span class="co"># create data frame with  7 columns: year, month, day, dep_delay, arr_delay, distance, air_time</span></span>
+<span id="cb132-2"><a href="add-new-variables-with-mutate.html#cb132-2"></a></span>
+<span id="cb132-3"><a href="add-new-variables-with-mutate.html#cb132-3"></a>flights_<span class="dv">7</span>_columns &lt;-<span class="st"> </span><span class="kw">select</span>(flights,</span>
+<span id="cb132-4"><a href="add-new-variables-with-mutate.html#cb132-4"></a>  year<span class="op">:</span>day,</span>
+<span id="cb132-5"><a href="add-new-variables-with-mutate.html#cb132-5"></a>  <span class="kw">ends_with</span>(<span class="st">&quot;delay&quot;</span>),</span>
+<span id="cb132-6"><a href="add-new-variables-with-mutate.html#cb132-6"></a>  distance,</span>
+<span id="cb132-7"><a href="add-new-variables-with-mutate.html#cb132-7"></a>  air_time</span>
+<span id="cb132-8"><a href="add-new-variables-with-mutate.html#cb132-8"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="add-new-variables-with-mutate.html#cb133-1"></a><span class="co"># calculate and add columns for gain, hours, and gain_per_hour</span></span>
+<span id="cb133-2"><a href="add-new-variables-with-mutate.html#cb133-2"></a></span>
+<span id="cb133-3"><a href="add-new-variables-with-mutate.html#cb133-3"></a><span class="kw">mutate</span>(flights_<span class="dv">7</span>_columns,</span>
+<span id="cb133-4"><a href="add-new-variables-with-mutate.html#cb133-4"></a>  <span class="dt">gain =</span> dep_delay <span class="op">-</span><span class="st"> </span>arr_delay,</span>
+<span id="cb133-5"><a href="add-new-variables-with-mutate.html#cb133-5"></a>  <span class="dt">hours =</span> air_time <span class="op">/</span><span class="st"> </span><span class="dv">60</span>,</span>
+<span id="cb133-6"><a href="add-new-variables-with-mutate.html#cb133-6"></a>  <span class="dt">gain_per_hour =</span> gain <span class="op">/</span><span class="st"> </span>hours</span>
+<span id="cb133-7"><a href="add-new-variables-with-mutate.html#cb133-7"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 10
+##     year month   day dep_delay arr_delay distance air_time  gain hours
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  2013     1     1         2        11     1400      227    -9 3.78 
+##  2  2013     1     1         4        20     1416      227   -16 3.78 
+##  3  2013     1     1         2        33     1089      160   -31 2.67 
+##  4  2013     1     1        -1       -18     1576      183    17 3.05 
+##  5  2013     1     1        -6       -25      762      116    19 1.93 
+##  6  2013     1     1        -4        12      719      150   -16 2.5  
+##  7  2013     1     1        -5        19     1065      158   -24 2.63 
+##  8  2013     1     1        -3       -14      229       53    11 0.883
+##  9  2013     1     1        -3        -8      944      140     5 2.33 
+## 10  2013     1     1        -2         8      733      138   -10 2.3  
+## # … with 336,766 more rows, and 1 more variable: gain_per_hour &lt;dbl&gt;</code></pre>
+<p><code>transmute()</code> adds new columns based on values from existing columns. Data frame only includes new columns.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="add-new-variables-with-mutate.html#cb135-1"></a><span class="co"># calculate and add columns for gain, hours, and gain_per_hour</span></span>
+<span id="cb135-2"><a href="add-new-variables-with-mutate.html#cb135-2"></a><span class="kw">transmute</span>(flights_<span class="dv">7</span>_columns,</span>
+<span id="cb135-3"><a href="add-new-variables-with-mutate.html#cb135-3"></a>  <span class="dt">gain =</span> dep_delay <span class="op">-</span><span class="st"> </span>arr_delay,</span>
+<span id="cb135-4"><a href="add-new-variables-with-mutate.html#cb135-4"></a>  <span class="dt">hours =</span> air_time <span class="op">/</span><span class="st"> </span><span class="dv">60</span>,</span>
+<span id="cb135-5"><a href="add-new-variables-with-mutate.html#cb135-5"></a>  <span class="dt">gain_per_hour =</span> gain <span class="op">/</span><span class="st"> </span>hours</span>
+<span id="cb135-6"><a href="add-new-variables-with-mutate.html#cb135-6"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 3
+##     gain hours gain_per_hour
+##    &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;
+##  1    -9 3.78          -2.38
+##  2   -16 3.78          -4.23
+##  3   -31 2.67         -11.6 
+##  4    17 3.05           5.57
+##  5    19 1.93           9.83
+##  6   -16 2.5           -6.4 
+##  7   -24 2.63          -9.11
+##  8    11 0.883         12.5 
+##  9     5 2.33           2.14
+## 10   -10 2.3           -4.35
+## # … with 336,766 more rows</code></pre>
+<div id="useful-creation-functions" class="section level3">
+<h3><span class="header-section-number">5.6.1</span> Useful creation functions</h3>
+<p>There are many functions to use with <code>mutate()</code>. The function must be vectorised: it must take a vector of values as input, return a vector with the same number of values as output.</p>
+<p>Arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code></p>
+<p>aggregate functions: <code>sum</code>, <code>mean</code></p>
+<p>Modular arithmetic: <code>%/%</code> (integer division) and <code>%%</code> (remainder)</p>
+<p>Logs: <code>log()</code>, <code>log2()</code>, <code>log10()</code></p>
+<p>Offsets: <code>lead()</code> leading values; <code>lag()</code> lagging values.</p>
+<p>Cumulative and rolling aggregates: <code>cumsum()</code> cumulative sums, <code>cumprod()</code> cumulative products, <code>cummin()</code> cumulative min, <code>cummax()</code> cumulative max, <code>cummean()</code> cumulative means.</p>
+<p>Logical comparisons: <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code>, and <code>==</code></p>
+<p>Ranking: <code>min_rank(x)</code> gives ranks from smallest to largest. <code>min_rank(desc(x))</code> gives ranks from largest to smallest. <code>row_number()</code>, <code>dense_rank()</code>, <code>percent_rank()</code>, <code>cume_dist()</code>, <code>ntile()</code>.</p>
+<p>Testing out various functions to see what they do.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="add-new-variables-with-mutate.html#cb137-1"></a><span class="kw">transmute</span>(flights,</span>
+<span id="cb137-2"><a href="add-new-variables-with-mutate.html#cb137-2"></a>  dep_time,</span>
+<span id="cb137-3"><a href="add-new-variables-with-mutate.html#cb137-3"></a>  arr_time,</span>
+<span id="cb137-4"><a href="add-new-variables-with-mutate.html#cb137-4"></a>  <span class="co"># Modular arithmetic</span></span>
+<span id="cb137-5"><a href="add-new-variables-with-mutate.html#cb137-5"></a>  <span class="dt">dep_hour =</span> dep_time <span class="op">%/%</span><span class="st"> </span><span class="dv">100</span>,</span>
+<span id="cb137-6"><a href="add-new-variables-with-mutate.html#cb137-6"></a>  <span class="dt">dep_minute =</span> dep_time <span class="op">%%</span><span class="st"> </span><span class="dv">100</span>,</span>
+<span id="cb137-7"><a href="add-new-variables-with-mutate.html#cb137-7"></a>  <span class="co"># Arithmetic</span></span>
+<span id="cb137-8"><a href="add-new-variables-with-mutate.html#cb137-8"></a>  <span class="dt">duration =</span> arr_time <span class="op">-</span><span class="st"> </span>dep_time,</span>
+<span id="cb137-9"><a href="add-new-variables-with-mutate.html#cb137-9"></a>  <span class="co"># logs</span></span>
+<span id="cb137-10"><a href="add-new-variables-with-mutate.html#cb137-10"></a>  <span class="dt">log_duration =</span> <span class="kw">log2</span>(duration),</span>
+<span id="cb137-11"><a href="add-new-variables-with-mutate.html#cb137-11"></a>  <span class="co"># Offsets</span></span>
+<span id="cb137-12"><a href="add-new-variables-with-mutate.html#cb137-12"></a>  <span class="dt">lead_duration =</span> <span class="kw">lead</span>(duration)</span>
+<span id="cb137-13"><a href="add-new-variables-with-mutate.html#cb137-13"></a>)</span></code></pre></div>
+<pre><code>## Warning in mask$eval_all_mutate(quo): NaNs produced</code></pre>
+<pre><code>## # A tibble: 336,776 × 7
+##    dep_time arr_time dep_hour dep_minute duration log_duration lead_duration
+##       &lt;int&gt;    &lt;int&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;int&gt;        &lt;dbl&gt;         &lt;int&gt;
+##  1      517      830        5         17      313         8.29           317
+##  2      533      850        5         33      317         8.31           381
+##  3      542      923        5         42      381         8.57           460
+##  4      544     1004        5         44      460         8.85           258
+##  5      554      812        5         54      258         8.01           186
+##  6      554      740        5         54      186         7.54           358
+##  7      555      913        5         55      358         8.48           152
+##  8      557      709        5         57      152         7.25           281
+##  9      557      838        5         57      281         8.13           195
+## 10      558      753        5         58      195         7.61           291
+## # … with 336,766 more rows</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="add-new-variables-with-mutate.html#cb140-1"></a><span class="kw">transmute</span>(flights,</span>
+<span id="cb140-2"><a href="add-new-variables-with-mutate.html#cb140-2"></a>  dep_time,</span>
+<span id="cb140-3"><a href="add-new-variables-with-mutate.html#cb140-3"></a>  arr_time,</span>
+<span id="cb140-4"><a href="add-new-variables-with-mutate.html#cb140-4"></a>  <span class="co"># Arithmetic</span></span>
+<span id="cb140-5"><a href="add-new-variables-with-mutate.html#cb140-5"></a>  <span class="dt">duration =</span> arr_time <span class="op">-</span><span class="st"> </span>dep_time,</span>
+<span id="cb140-6"><a href="add-new-variables-with-mutate.html#cb140-6"></a>  <span class="co"># Cumulative aggregates</span></span>
+<span id="cb140-7"><a href="add-new-variables-with-mutate.html#cb140-7"></a>  <span class="dt">cumsum_duration =</span> <span class="kw">cumsum</span>(duration),</span>
+<span id="cb140-8"><a href="add-new-variables-with-mutate.html#cb140-8"></a>  <span class="co"># Logical comparisons</span></span>
+<span id="cb140-9"><a href="add-new-variables-with-mutate.html#cb140-9"></a>  <span class="dt">long_duration =</span> duration <span class="op">&gt;</span><span class="st"> </span><span class="dv">300</span>,</span>
+<span id="cb140-10"><a href="add-new-variables-with-mutate.html#cb140-10"></a>  <span class="co"># Ranking</span></span>
+<span id="cb140-11"><a href="add-new-variables-with-mutate.html#cb140-11"></a>  <span class="dt">rank_duration =</span> <span class="kw">min_rank</span>(duration)</span>
+<span id="cb140-12"><a href="add-new-variables-with-mutate.html#cb140-12"></a>)</span></code></pre></div>
+<pre><code>## # A tibble: 336,776 × 6
+##    dep_time arr_time duration cumsum_duration long_duration rank_duration
+##       &lt;int&gt;    &lt;int&gt;    &lt;int&gt;           &lt;int&gt; &lt;lgl&gt;                 &lt;int&gt;
+##  1      517      830      313             313 TRUE                 285919
+##  2      533      850      317             630 TRUE                 290078
+##  3      542      923      381            1011 TRUE                 317071
+##  4      544     1004      460            1471 TRUE                 325198
+##  5      554      812      258            1729 FALSE                199982
+##  6      554      740      186            1915 FALSE                114148
+##  7      555      913      358            2273 TRUE                 307731
+##  8      557      709      152            2425 FALSE                 77988
+##  9      557      838      281            2706 FALSE                224583
+## 10      558      753      195            2901 FALSE                129730
+## # … with 336,766 more rows</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="select-columns-with-select.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="grouped-summaries-with-summarize.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/r4ds/bookclub-r4ds/edit/main/05-data_transformation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
