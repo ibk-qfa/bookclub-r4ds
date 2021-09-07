@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14.2 Slide 2 | R for Data Science Book Club</title>
+  <title>5.9 Meeting Videos | R for Data Science Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14.2 Slide 2 | R for Data Science Book Club" />
+  <meta property="og:title" content="5.9 Meeting Videos | R for Data Science Book Club" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="r4ds/bookclub-r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14.2 Slide 2 | R for Data Science Book Club" />
+  <meta name="twitter:title" content="5.9 Meeting Videos | R for Data Science Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="slide-1-5.html"/>
-<link rel="next" href="factors.html"/>
+<link rel="prev" href="grouped-mutates-and-filters.html"/>
+<link rel="next" href="workflow-scripts.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -364,10 +364,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="slide-2-5" class="section level2">
-<h2><span class="header-section-number">14.2</span> Slide 2</h2>
-<p>Slide contents.</p>
+<div id="meeting-videos-3" class="section level2">
+<h2><span class="header-section-number">5.9</span> Meeting Videos</h2>
+<div id="cohort-1-3" class="section level3">
+<h3><span class="header-section-number">5.9.1</span> Cohort 1</h3>
+<iframe src="https://www.youtube.com/embed/J6mGn1F1kiA" width="100%" height="400px">
+</iframe>
+<details>
+<p><summary> Meeting chat log </summary></p>
+<pre><code>00:13:48    Jon Harmon (jonthegeek):    &quot;dplyr&quot; as in &quot;data plyer&quot; (tools for working with data)
+00:22:03    Ryan Metcalf:   I call the | as “handlebar”…may be my own lingo too.
+00:22:20    lucus w:    I like vbar
+00:38:30    Ryan Metcalf:   Quick thought, on dat ingestion, does the tidyverse convert null to NA? Or an alternative, does is.na look for null too?
+00:39:19    Jon Harmon (jonthegeek):    Null coming in from a database will convert to NA. NULL specifically means &quot;does not exist,&quot; and can&#39;t be inside a vector of numbers in R. It&#39;s its own data type in R.
+00:39:24    lucus w:    I believe NA and NULL aren’t the same thing, so I’d guess no
+00:39:53    Njoki Njuki Lucy:   can one use filter to remove na?
+00:40:01    Ryan Metcalf:   👍🏻
+00:40:45    lucus w:    filter(!is.na(x)) wil do the trick
+00:40:51    Jon Harmon (jonthegeek):    filter(flights, !is.na(month)) would remove NA rows.
+00:41:05    Jon Harmon (jonthegeek):    Lucus beat me to it :D
+00:42:22    Njoki Njuki Lucy:   awesome, thank you both :)
+00:46:06    Jon Harmon (jonthegeek):    Chapter 14 has more on regular expressions.
+00:47:03    Jon Harmon (jonthegeek):    https://regexr.com/
+00:58:04    lucus w:    I wish all aggregate functions would have na.rm = TRUE as a default
+01:04:21    lucus w:    is magrittr a function or just an operator
+01:04:35    lucus w:    %&gt;%
+01:04:38    Jon Harmon (jonthegeek):    If you&#39;re curious why the pipe package is called magrittr: https://en.wikipedia.org/wiki/The_Treachery_of_Images#/media/File:MagrittePipe.jpg
+01:05:02    Jon Harmon (jonthegeek):    magrittr is the package which exports the %&gt;% function (but it&#39;s a special kind of function because it can go in the middle of its arguments)
+01:16:15    Eileen: Great presentation
+01:16:17    Ryan Metcalf:   Great job!
+01:16:34    LG: Thank you!
+01:16:46    Njoki Njuki Lucy:   Thank you!
+01:17:40    Eileen: Thank you!</code></pre>
+</details>
 
+</div>
 </div>
 <!-- </div> -->
             </section>
@@ -375,8 +406,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="slide-1-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="factors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="grouped-mutates-and-filters.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="workflow-scripts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -407,7 +438,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-r4ds/edit/main/14-strings.Rmd",
+"link": "https://github.com/r4ds/bookclub-r4ds/edit/main/05-data_transformation.Rmd",
 "text": "Edit"
 },
 "history": {

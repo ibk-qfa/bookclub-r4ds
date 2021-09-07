@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14.2 Slide 2 | R for Data Science Book Club</title>
+  <title>3.8 Meeting Videos | R for Data Science Book Club</title>
   <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14.2 Slide 2 | R for Data Science Book Club" />
+  <meta property="og:title" content="3.8 Meeting Videos | R for Data Science Book Club" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="r4ds/bookclub-r4ds" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14.2 Slide 2 | R for Data Science Book Club" />
+  <meta name="twitter:title" content="3.8 Meeting Videos | R for Data Science Book Club" />
   
   <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="slide-1-5.html"/>
-<link rel="next" href="factors.html"/>
+<link rel="prev" href="to-summarize-the-gg-in-ggplot.html"/>
+<link rel="next" href="workflow-basics.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -364,10 +364,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="slide-2-5" class="section level2">
-<h2><span class="header-section-number">14.2</span> Slide 2</h2>
-<p>Slide contents.</p>
+<div id="meeting-videos-1" class="section level2">
+<h2><span class="header-section-number">3.8</span> Meeting Videos</h2>
+<div id="cohort-1-1" class="section level3">
+<h3><span class="header-section-number">3.8.1</span> Cohort 1</h3>
+<iframe src="https://www.youtube.com/embed/0NdiQuuM0vw" width="100%" height="400px">
+</iframe>
+<details>
+<p><summary> Meeting chat log </summary></p>
+<pre><code>00:11:14    Jon Harmon (jonthegeek):    r4ds.io/r4ds
+00:12:06    Saeed Shafiei Sabet:    Hi everyone!
+00:12:29    Sandra Muroy:   Hi Saeed!
+00:13:05    Becki R. (she/her): Hello!
+00:13:30    Sandra Muroy:   Hi Becki!
+00:22:41    Saeed Shafiei Sabet:    Can also by using ggplot2 do some 3D surface plots?
+00:24:01    shamsuddeen:    https://ggplot2.tidyverse.org/reference/geom_contour.html
+00:24:12    shamsuddeen:    2D contours of a 3D surface
+00:25:34    Saeed Shafiei Sabet:    Thanks @shamsuddeen ;)
+00:25:50    Jon Harmon (jonthegeek):    ggplot2 is 2D. There are other packages for 3D visualization, I&#39;ll try to link some in your question on the Slack once we&#39;re done!
+00:26:29    Saeed Shafiei Sabet:    @Jon Thanks a lot! :)
+00:26:34    shamsuddeen:    I guess this package provides 3D plotting https://www.rayshader.com/index.html
+00:27:24    Jon Harmon (jonthegeek):    Yup, that&#39;s the one I was going to recommend: https://cran.r-project.org/web/packages/rayshader/index.html
+00:28:28    Jon Harmon (jonthegeek):    I found it super helpful to figure out how to read some of these things as words:
+%&gt;% = &quot;and then&quot;
+~ = &quot;by&quot; (usually)
+00:28:30    shamsuddeen:    Looks at some practical examples of the package here: https://www.tylermw.com/3d-ggplots-with-rayshader/
+00:29:54    Saeed Shafiei Sabet:    Thank you!
+00:36:02    docksbox@pm.me: https://jrnold.github.io/r4ds-exercise-solutions/
+00:40:57    Jon Harmon (jonthegeek):    ?ggplot2::mpg will show all the details of the dataset
+00:41:50    Sandra Muroy:   thanks Jon :)
+00:42:40    Jon Harmon (jonthegeek):    hwy = &quot;highway miles per gallon&quot;, cty = &quot;city miles per gallon&quot; in that set, so usually that&#39;s what you&#39;d want on y.
+00:43:38    Becki R. (she/her): Did I hear correctly that the dependent variable goes on the y-axis?
+00:44:04    Jon Harmon (jonthegeek):    Generally, yes. But it&#39;s whatever you specify as &quot;y&quot; in the &quot;aes&quot; call.
+00:44:16    Becki R. (she/her): ok thanks
+00:49:24    Jon Harmon (jonthegeek):    The &quot;labs&quot; function is for all of the labels for your plot.
+00:51:26    Jon Harmon (jonthegeek):    https://twitter.com/search?q=%23tidytuesday&amp;src=typed_query
+00:51:48    Hector: Is there any specific use for the ggtitle() function in contrast with labs() ?
+00:52:09    Njoki Njuki Lucy:   what is there a difference between stat=&quot;count&quot; and stat=&quot;identity&quot;? I understand stat = &quot;count returns count per each level.
+00:53:23    Jon Harmon (jonthegeek):    @Hector: ggtitle is equivalent to labs() for just the title and subtitle parts. It&#39;s just to make it easier to focus on those specific bits.
+00:53:56    Jon Harmon (jonthegeek):    @Njoki: &quot;count&quot; means &quot;how many entries have this value?&quot;, vs &quot;identity&quot; means &quot;what value is in this cell?&quot;
+00:54:59    Hector: Thank you!
+00:55:04    Njoki Njuki Lucy:   thank you.
+00:56:26    Jon Harmon (jonthegeek):    &quot;color&quot; = outside, &quot;fill&quot; = inside
+00:58:53    docksbox@pm.me: labs()
+01:04:36    Ryan Metcalf:   Could it be stated that “labs” is a more eloquent way of labeling than explicitly calling each field directly? Less lines of code maybe?
+01:05:47    Jon Harmon (jonthegeek):    I&#39;m not sure I&#39;d say &quot;eloquent,&quot; but it&#39;s just another option. They provide the separate functions in case you&#39;re looking for them, basically.
+01:07:23    Jon Harmon (jonthegeek):    Sorry about that!
+01:08:23    Susie Neilson:  This was a great presentation - thank you so much Federica!
+01:12:31    docksbox@pm.me: example would be the use of a map data
+01:12:51    Saeed Shafiei Sabet:    Thanks Federica :)
+01:13:43    docksbox@pm.me: great thanks!
+01:13:46    Fodil:  thank you everyone was very interesting.
+01:13:51    Becki R. (she/her): Thanks, Federica!
+01:13:56    Njoki Njuki Lucy:   Thank you.
+01:13:56    Saeed Shafiei Sabet:    Thank you
+01:13:58    Saeed Shafiei Sabet:    bye</code></pre>
+</details>
 
+</div>
 </div>
 <!-- </div> -->
             </section>
@@ -375,8 +429,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="slide-1-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="factors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="to-summarize-the-gg-in-ggplot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="workflow-basics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -407,7 +461,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/r4ds/bookclub-r4ds/edit/main/14-strings.Rmd",
+"link": "https://github.com/r4ds/bookclub-r4ds/edit/main/03-data_visualisation.Rmd",
 "text": "Edit"
 },
 "history": {
