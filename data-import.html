@@ -24,7 +24,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2021-09-07" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -368,7 +368,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 11</span> Data import</h1>
 <p><strong>Learning objectives:</strong></p>
 <ul>
-<li>Jon will try to prefill these ahead of each week.</li>
+<li><strong>Read data</strong> from disk using the <code>readr::read_*()</code> family of functions.</li>
+<li><strong>Compare and contrast</strong> the <code>read_*()</code> functions with the base R equivalents.</li>
+<li><strong>Parse character data</strong> into other data types using the <code>readr::parse_*()</code> functions.
+<ul>
+<li>List the complications that can arise when parsing <strong>numerical strings</strong>.</li>
+<li>Understand how the various <strong>character encodings</strong> can make it tricky to parse characters.</li>
+<li>Describe the common conventions used for <strong>date/time data</strong>.</li>
+</ul></li>
+<li><strong>Diagnose problems</strong> that may arise when using the <code>read_*()</code> functions.</li>
+<li><strong>Write data</strong> to disk using the <code>readr::write_*()</code> family of functions.</li>
 </ul>
 </div>
             </section>
