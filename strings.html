@@ -24,7 +24,7 @@
 <meta name="author" content="The R4DS Online Learning Community" />
 
 
-<meta name="date" content="2021-11-01" />
+<meta name="date" content="2021-11-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -368,7 +368,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 14</span> Strings</h1>
 <p><strong>Learning objectives:</strong></p>
 <ul>
-<li>Jon will try to prefill these ahead of each week.</li>
+<li>Manipulate <strong>character vectors</strong> using simple <code>{stringr}</code> functions.</li>
+<li>Use <strong>regular expressions (regex)</strong> to match <strong>patterns</strong> in strings.
+<ul>
+<li>Use <strong>regex</strong> to match <strong>simple characters, <code>.</code>, and <code>\</code>.</strong></li>
+<li>Use <strong>regex</strong> <code>^</code>, <code>$</code>, and <code>\b</code> to match <strong>anchors and boundaries.</strong></li>
+<li>Use <strong>regex</strong> <code>\d</code>, <code>\s</code>, <code>[]</code>, and <code>[^]</code> to match <strong>character classes.</strong></li>
+<li>Use <strong>regex</strong> <code>|</code> and <code>()</code> to match <strong>alternatives.</strong></li>
+<li>Use <strong>regex</strong> <code>?</code>, <code>+</code>, <code>*</code>, <code>{n}</code>, <code>{n,}</code>, <code>{,m}</code>, and <code>{n, m}</code> to match <strong>repetitions in patterns.</strong></li>
+<li>Use <strong>regex grouping and backreferences</strong> to refer to previous matches.</li>
+</ul></li>
+<li>Use <code>{stringr}</code> <strong>functions</strong> and <strong>regex</strong> to <strong>manipulate strings.</strong>
+<ul>
+<li><strong>Detect</strong> pattern matches with <code>stringr::str_detect()</code>.</li>
+<li>Select <strong>subsets</strong> of strings that match a pattern with <code>stringr::str_subset()</code>.</li>
+<li><strong>Count</strong> pattern matches with <code>stringr::str_count()</code>.</li>
+<li><strong>Extract</strong> pattern matches with <code>stringr::str_extract()</code> and <code>stringr::str_extract_all()</code>.</li>
+<li><strong>Extract group matches</strong> with <code>stringr::str_match()</code>, <code>stringr::str_match_all()</code>, and <code>tidyr::extract()</code>.</li>
+<li><strong>Replace</strong> pattern matches with <code>stringr::str_replace()</code> and <code>stringr::str_replace_all()</code>.</li>
+<li><strong>Split</strong> strings into pieces with <code>stringr::str_split()</code> and <code>stringr::boundary()</code>.</li>
+<li><strong>Locate</strong> matches within a string with <code>stringr::str_locate()</code> and <code>stringr::str_locate_all()</code>.</li>
+</ul></li>
+<li>Use <strong>other {stringr} matching rules</strong> to find specific patterns.</li>
+<li>Use <strong>regex patterns</strong> with base functions such as <code>apropos()</code> and <code>dir()</code> to find things.</li>
+<li>Describe the <strong>relationship</strong> between <code>{stringr}</code> and <code>{stringi}</code>.</li>
 </ul>
 </div>
             </section>
