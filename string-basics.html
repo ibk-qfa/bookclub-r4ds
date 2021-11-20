@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>14.2 String Basics | R for Data Science Book Club</title>
+  <meta name="description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="14.2 String Basics | R for Data Science Book Club" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  <meta name="github-repo" content="r4ds/bookclub-r4ds" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14.2 String Basics | R for Data Science Book Club" />
+  
+  <meta name="twitter:description" content="This is the product of the R4DS Online Learning Community’s Book Club." />
+  
+
+<meta name="author" content="The R4DS Online Learning Community" />
+
+
+<meta name="date" content="2021-11-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-4.html"/>
+<link rel="next" href="matching-patterns-with-regular-expressions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for Data Science Book Club</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction-preface.html"><a href="introduction-preface.html"><i class="fa fa-check"></i><b>1</b> Introduction (Preface)</a><ul>
+<li class="chapter" data-level="1.1" data-path="a-typical-data-science-project.html"><a href="a-typical-data-science-project.html"><i class="fa fa-check"></i><b>1.1</b> A typical data science project</a></li>
+<li class="chapter" data-level="1.2" data-path="the-order-of-content-in-this-book.html"><a href="the-order-of-content-in-this-book.html"><i class="fa fa-check"></i><b>1.2</b> The order of content in this book</a></li>
+<li class="chapter" data-level="1.3" data-path="not-covered-by-this-book.html"><a href="not-covered-by-this-book.html"><i class="fa fa-check"></i><b>1.3</b> Not covered by this book</a></li>
+<li class="chapter" data-level="1.4" data-path="setting-up-an-environment.html"><a href="setting-up-an-environment.html"><i class="fa fa-check"></i><b>1.4</b> Setting up an environment</a></li>
+<li class="chapter" data-level="1.5" data-path="running-r-code.html"><a href="running-r-code.html"><i class="fa fa-check"></i><b>1.5</b> Running R code</a></li>
+<li class="chapter" data-level="1.6" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i><b>1.6</b> Getting help</a></li>
+<li class="chapter" data-level="1.7" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i><b>1.7</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i><b>1.7.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>I Explore</b></span></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> Data visualisation</a><ul>
+<li class="chapter" data-level="3.1" data-path="loading-packages-in-r.html"><a href="loading-packages-in-r.html"><i class="fa fa-check"></i><b>3.1</b> Loading Packages in R</a></li>
+<li class="chapter" data-level="3.2" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>3.2</b> First Steps</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="first-steps.html"><a href="first-steps.html#how-to-visualise-your-data-using-ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> How to visualise your data using ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="geometry.html"><a href="geometry.html"><i class="fa fa-check"></i><b>3.3</b> Geometry</a></li>
+<li class="chapter" data-level="3.4" data-path="aesthetic-mappings.html"><a href="aesthetic-mappings.html"><i class="fa fa-check"></i><b>3.4</b> Aesthetic mappings</a></li>
+<li class="chapter" data-level="3.5" data-path="common-problems.html"><a href="common-problems.html"><i class="fa fa-check"></i><b>3.5</b> Common problems</a></li>
+<li class="chapter" data-level="3.6" data-path="other-function-and-features.html"><a href="other-function-and-features.html"><i class="fa fa-check"></i><b>3.6</b> Other function and features</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="other-function-and-features.html"><a href="other-function-and-features.html#facets"><i class="fa fa-check"></i><b>3.6.1</b> Facets</a></li>
+<li class="chapter" data-level="3.6.2" data-path="other-function-and-features.html"><a href="other-function-and-features.html#statistical-transformations"><i class="fa fa-check"></i><b>3.6.2</b> Statistical transformations</a></li>
+<li class="chapter" data-level="3.6.3" data-path="other-function-and-features.html"><a href="other-function-and-features.html#position-adjustments"><i class="fa fa-check"></i><b>3.6.3</b> Position adjustments</a></li>
+<li class="chapter" data-level="3.6.4" data-path="other-function-and-features.html"><a href="other-function-and-features.html#coordinate-systems"><i class="fa fa-check"></i><b>3.6.4</b> Coordinate systems</a></li>
+<li class="chapter" data-level="3.6.5" data-path="other-function-and-features.html"><a href="other-function-and-features.html#theme"><i class="fa fa-check"></i><b>3.6.5</b> Theme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html"><i class="fa fa-check"></i><b>3.7</b> To summarize: The gg in {ggplot}</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#exercises"><i class="fa fa-check"></i><b>3.7.1</b> Exercises:</a></li>
+<li class="chapter" data-level="3.7.2" data-path="to-summarize-the-gg-in-ggplot.html"><a href="to-summarize-the-gg-in-ggplot.html#resources"><i class="fa fa-check"></i><b>3.7.2</b> Resources:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html"><i class="fa fa-check"></i><b>3.8</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html#cohort-1-1"><i class="fa fa-check"></i><b>3.8.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-console-pane.html"><a href="the-console-pane.html"><i class="fa fa-check"></i><b>4.1</b> The Console Pane</a></li>
+<li class="chapter" data-level="" data-path="the-script-pane.html"><a href="the-script-pane.html"><i class="fa fa-check"></i>The Script Pane</a></li>
+<li class="chapter" data-level="" data-path="the-environment-pane.html"><a href="the-environment-pane.html"><i class="fa fa-check"></i>The Environment Pane</a></li>
+<li class="chapter" data-level="" data-path="the-other-pane.html"><a href="the-other-pane.html"><i class="fa fa-check"></i>The Other Pane</a></li>
+<li class="chapter" data-level="" data-path="using-the-console.html"><a href="using-the-console.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="using-the-console-1.html"><a href="using-the-console-1.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="using-the-console-2.html"><a href="using-the-console-2.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="using-the-console-3.html"><a href="using-the-console-3.html"><i class="fa fa-check"></i>Using the Console</a></li>
+<li class="chapter" data-level="" data-path="assigning-names.html"><a href="assigning-names.html"><i class="fa fa-check"></i>Assigning Names</a></li>
+<li class="chapter" data-level="" data-path="assigning-and-printing.html"><a href="assigning-and-printing.html"><i class="fa fa-check"></i>Assigning and Printing</a></li>
+<li class="chapter" data-level="" data-path="pronouncing-code.html"><a href="pronouncing-code.html"><i class="fa fa-check"></i>Pronouncing Code</a></li>
+<li class="chapter" data-level="4.2" data-path="naming-things.html"><a href="naming-things.html"><i class="fa fa-check"></i><b>4.2</b> Naming Things</a></li>
+<li class="chapter" data-level="4.3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>4.3</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i>Functions</a></li>
+<li class="chapter" data-level="" data-path="other-rstudio-features.html"><a href="other-rstudio-features.html"><i class="fa fa-check"></i>Other RStudio Features</a></li>
+<li class="chapter" data-level="4.4" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html"><i class="fa fa-check"></i><b>4.4</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html#cohort-1-2"><i class="fa fa-check"></i><b>4.4.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>5</b> Data transformation</a><ul>
+<li class="chapter" data-level="5.1" data-path="introduction-1.html"><a href="introduction-1.html"><i class="fa fa-check"></i><b>5.1</b> Introduction</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-1.html"><a href="introduction-1.html#prerequisites"><i class="fa fa-check"></i><b>5.1.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-1.html"><a href="introduction-1.html#nycflights13"><i class="fa fa-check"></i><b>5.1.2</b> nycflights13</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="comparisons-and-logical-operators.html"><a href="comparisons-and-logical-operators.html"><i class="fa fa-check"></i><b>5.2</b> Comparisons and logical operators</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="comparisons-and-logical-operators.html"><a href="comparisons-and-logical-operators.html#comparisons"><i class="fa fa-check"></i><b>5.2.1</b> Comparisons</a></li>
+<li class="chapter" data-level="5.2.2" data-path="comparisons-and-logical-operators.html"><a href="comparisons-and-logical-operators.html#logical-operators"><i class="fa fa-check"></i><b>5.2.2</b> Logical operators</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="filter-rows-with-filter.html"><a href="filter-rows-with-filter.html"><i class="fa fa-check"></i><b>5.3</b> Filter rows with filter()</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="filter-rows-with-filter.html"><a href="filter-rows-with-filter.html#missing-values"><i class="fa fa-check"></i><b>5.3.1</b> Missing values</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="arrange-rows-with-arrange.html"><a href="arrange-rows-with-arrange.html"><i class="fa fa-check"></i><b>5.4</b> Arrange rows with arrange()</a></li>
+<li class="chapter" data-level="5.5" data-path="select-columns-with-select.html"><a href="select-columns-with-select.html"><i class="fa fa-check"></i><b>5.5</b> Select columns with select()</a></li>
+<li class="chapter" data-level="5.6" data-path="add-new-variables-with-mutate.html"><a href="add-new-variables-with-mutate.html"><i class="fa fa-check"></i><b>5.6</b> Add new variables with mutate()</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="add-new-variables-with-mutate.html"><a href="add-new-variables-with-mutate.html#useful-creation-functions"><i class="fa fa-check"></i><b>5.6.1</b> Useful creation functions</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html"><i class="fa fa-check"></i><b>5.7</b> Grouped summaries with summarize()</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#combining-multiple-operations-with-the-pipe"><i class="fa fa-check"></i><b>5.7.1</b> Combining multiple operations with the pipe</a></li>
+<li class="chapter" data-level="5.7.2" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#counts"><i class="fa fa-check"></i><b>5.7.2</b> Counts</a></li>
+<li class="chapter" data-level="5.7.3" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#useful-summary-functions"><i class="fa fa-check"></i><b>5.7.3</b> Useful summary functions</a></li>
+<li class="chapter" data-level="5.7.4" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#grouping-by-multiple-variables"><i class="fa fa-check"></i><b>5.7.4</b> Grouping by multiple variables</a></li>
+<li class="chapter" data-level="5.7.5" data-path="grouped-summaries-with-summarize.html"><a href="grouped-summaries-with-summarize.html#ungrouping"><i class="fa fa-check"></i><b>5.7.5</b> Ungrouping</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="grouped-mutates-and-filters.html"><a href="grouped-mutates-and-filters.html"><i class="fa fa-check"></i><b>5.8</b> Grouped mutates (and filters)</a></li>
+<li class="chapter" data-level="5.9" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html"><i class="fa fa-check"></i><b>5.9</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html#cohort-1-3"><i class="fa fa-check"></i><b>5.9.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a><ul>
+<li class="chapter" data-level="6.1" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html"><i class="fa fa-check"></i><b>6.1</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html#cohort-1-4"><i class="fa fa-check"></i><b>6.1.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="learning-objectives.html"><a href="learning-objectives.html"><i class="fa fa-check"></i><b>7.1</b> Learning objectives</a></li>
+<li class="chapter" data-level="7.2" data-path="overall-vocabulary.html"><a href="overall-vocabulary.html"><i class="fa fa-check"></i><b>7.2</b> Overall Vocabulary</a></li>
+<li class="chapter" data-level="7.3" data-path="variation.html"><a href="variation.html"><i class="fa fa-check"></i><b>7.3</b> Variation</a></li>
+<li class="chapter" data-level="7.4" data-path="missing-values-1.html"><a href="missing-values-1.html"><i class="fa fa-check"></i><b>7.4</b> Missing values</a></li>
+<li class="chapter" data-level="7.5" data-path="covariation.html"><a href="covariation.html"><i class="fa fa-check"></i><b>7.5</b> Covariation</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="covariation.html"><a href="covariation.html#categorical-continuous"><i class="fa fa-check"></i><b>7.5.1</b> categorical + continuous</a></li>
+<li class="chapter" data-level="7.5.2" data-path="covariation.html"><a href="covariation.html#categorical-categorical"><i class="fa fa-check"></i><b>7.5.2</b> categorical + categorical</a></li>
+<li class="chapter" data-level="7.5.3" data-path="covariation.html"><a href="covariation.html#continuous-continuous"><i class="fa fa-check"></i><b>7.5.3</b> continuous + continuous</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="finding-patterns.html"><a href="finding-patterns.html"><i class="fa fa-check"></i><b>7.6</b> Finding Patterns</a></li>
+<li class="chapter" data-level="7.7" data-path="simplified-ggplot2.html"><a href="simplified-ggplot2.html"><i class="fa fa-check"></i><b>7.7</b> Simplified ggplot2</a></li>
+<li class="chapter" data-level="7.8" data-path="learning-more.html"><a href="learning-more.html"><i class="fa fa-check"></i><b>7.8</b> Learning More</a></li>
+<li class="chapter" data-level="7.9" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html"><i class="fa fa-check"></i><b>7.9</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html#cohort-1-5"><i class="fa fa-check"></i><b>7.9.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="workflow-projects.html"><a href="workflow-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: projects</a><ul>
+<li class="chapter" data-level="8.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html"><i class="fa fa-check"></i><b>8.1</b> Meeting Videos</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html#cohort-1-6"><i class="fa fa-check"></i><b>8.1.1</b> Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Wrangle</b></span></li>
+<li class="chapter" data-level="9" data-path="introduction-2.html"><a href="introduction-2.html"><i class="fa fa-check"></i><b>9</b> Introduction</a><ul>
+<li class="chapter" data-level="9.1" data-path="slide-1.html"><a href="slide-1.html"><i class="fa fa-check"></i><b>9.1</b> Slide 1</a></li>
+<li class="chapter" data-level="9.2" data-path="slide-2.html"><a href="slide-2.html"><i class="fa fa-check"></i><b>9.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tibbles.html"><a href="tibbles.html"><i class="fa fa-check"></i><b>10</b> Tibbles</a><ul>
+<li class="chapter" data-level="10.1" data-path="slide-1-1.html"><a href="slide-1-1.html"><i class="fa fa-check"></i><b>10.1</b> Slide 1</a></li>
+<li class="chapter" data-level="10.2" data-path="slide-2-1.html"><a href="slide-2-1.html"><i class="fa fa-check"></i><b>10.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>11</b> Data import</a><ul>
+<li class="chapter" data-level="11.1" data-path="slide-1-2.html"><a href="slide-1-2.html"><i class="fa fa-check"></i><b>11.1</b> Slide 1</a></li>
+<li class="chapter" data-level="11.2" data-path="slide-2-2.html"><a href="slide-2-2.html"><i class="fa fa-check"></i><b>11.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>12</b> Tidy data</a><ul>
+<li class="chapter" data-level="12.1" data-path="slide-1-3.html"><a href="slide-1-3.html"><i class="fa fa-check"></i><b>12.1</b> Slide 1</a></li>
+<li class="chapter" data-level="12.2" data-path="slide-2-3.html"><a href="slide-2-3.html"><i class="fa fa-check"></i><b>12.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>13</b> Relational data</a><ul>
+<li class="chapter" data-level="13.1" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.2" data-path="nycflights13-1.html"><a href="nycflights13-1.html"><i class="fa fa-check"></i><b>13.2</b> nycflights13</a></li>
+<li class="chapter" data-level="13.3" data-path="keys.html"><a href="keys.html"><i class="fa fa-check"></i><b>13.3</b> Keys</a></li>
+<li class="chapter" data-level="13.4" data-path="mutating-joins.html"><a href="mutating-joins.html"><i class="fa fa-check"></i><b>13.4</b> Mutating joins</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="mutating-joins.html"><a href="mutating-joins.html#understanding-joins"><i class="fa fa-check"></i><b>13.4.1</b> Understanding joins</a></li>
+<li class="chapter" data-level="13.4.2" data-path="mutating-joins.html"><a href="mutating-joins.html#inner-join"><i class="fa fa-check"></i><b>13.4.2</b> Inner join</a></li>
+<li class="chapter" data-level="13.4.3" data-path="mutating-joins.html"><a href="mutating-joins.html#outer-joins"><i class="fa fa-check"></i><b>13.4.3</b> Outer joins</a></li>
+<li class="chapter" data-level="13.4.4" data-path="mutating-joins.html"><a href="mutating-joins.html#duplicate-keys"><i class="fa fa-check"></i><b>13.4.4</b> Duplicate keys</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="filtering-joins.html"><a href="filtering-joins.html"><i class="fa fa-check"></i><b>13.5</b> Filtering joins</a></li>
+<li class="chapter" data-level="13.6" data-path="some-more-things-to-consider.html"><a href="some-more-things-to-consider.html"><i class="fa fa-check"></i><b>13.6</b> Some more things to consider</a><ul>
+<li class="chapter" data-level="13.6.1" data-path="some-more-things-to-consider.html"><a href="some-more-things-to-consider.html#join-problems"><i class="fa fa-check"></i><b>13.6.1</b> Join problems</a></li>
+<li class="chapter" data-level="13.6.2" data-path="some-more-things-to-consider.html"><a href="some-more-things-to-consider.html#set-operations"><i class="fa fa-check"></i><b>13.6.2</b> Set operations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>14</b> Strings</a><ul>
+<li class="chapter" data-level="14.1" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>14.1</b> Introduction</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="introduction-4.html"><a href="introduction-4.html#pre-requisites"><i class="fa fa-check"></i><b>14.1.1</b> Pre-Requisites</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="string-basics.html"><a href="string-basics.html"><i class="fa fa-check"></i><b>14.2</b> String Basics</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="string-basics.html"><a href="string-basics.html#string-length"><i class="fa fa-check"></i><b>14.2.1</b> String Length</a></li>
+<li class="chapter" data-level="14.2.2" data-path="string-basics.html"><a href="string-basics.html#combining-strings"><i class="fa fa-check"></i><b>14.2.2</b> Combining Strings</a></li>
+<li class="chapter" data-level="14.2.3" data-path="string-basics.html"><a href="string-basics.html#subsetting-strings"><i class="fa fa-check"></i><b>14.2.3</b> Subsetting Strings</a></li>
+<li class="chapter" data-level="14.2.4" data-path="string-basics.html"><a href="string-basics.html#locales"><i class="fa fa-check"></i><b>14.2.4</b> Locales</a></li>
+<li class="chapter" data-level="14.2.5" data-path="string-basics.html"><a href="string-basics.html#exercises-1"><i class="fa fa-check"></i><b>14.2.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="matching-patterns-with-regular-expressions.html"><a href="matching-patterns-with-regular-expressions.html"><i class="fa fa-check"></i><b>14.3</b> Matching Patterns with Regular Expressions</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="matching-patterns-with-regular-expressions.html"><a href="matching-patterns-with-regular-expressions.html#basic-matches"><i class="fa fa-check"></i><b>14.3.1</b> Basic Matches</a></li>
+<li class="chapter" data-level="14.3.2" data-path="matching-patterns-with-regular-expressions.html"><a href="matching-patterns-with-regular-expressions.html#anchors"><i class="fa fa-check"></i><b>14.3.2</b> Anchors</a></li>
+<li class="chapter" data-level="14.3.3" data-path="matching-patterns-with-regular-expressions.html"><a href="matching-patterns-with-regular-expressions.html#character-classes-and-alternatives"><i class="fa fa-check"></i><b>14.3.3</b> Character Classes and Alternatives</a></li>
+<li class="chapter" data-level="14.3.4" data-path="matching-patterns-with-regular-expressions.html"><a href="matching-patterns-with-regular-expressions.html#repetition"><i class="fa fa-check"></i><b>14.3.4</b> Repetition</a></li>
+<li class="chapter" data-level="14.3.5" data-path="matching-patterns-with-regular-expressions.html"><a href="matching-patterns-with-regular-expressions.html#grouping-and-backreferences"><i class="fa fa-check"></i><b>14.3.5</b> Grouping and Backreferences</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>14.4</b> Tools</a><ul>
+<li class="chapter" data-level="14.4.1" data-path="tools.html"><a href="tools.html#detect-matches"><i class="fa fa-check"></i><b>14.4.1</b> Detect Matches</a></li>
+<li class="chapter" data-level="14.4.2" data-path="tools.html"><a href="tools.html#extract-matches"><i class="fa fa-check"></i><b>14.4.2</b> Extract Matches</a></li>
+<li class="chapter" data-level="14.4.3" data-path="tools.html"><a href="tools.html#grouped-matches"><i class="fa fa-check"></i><b>14.4.3</b> Grouped Matches</a></li>
+<li class="chapter" data-level="14.4.4" data-path="tools.html"><a href="tools.html#replacing-matches"><i class="fa fa-check"></i><b>14.4.4</b> Replacing Matches</a></li>
+<li class="chapter" data-level="14.4.5" data-path="tools.html"><a href="tools.html#splitting"><i class="fa fa-check"></i><b>14.4.5</b> Splitting</a></li>
+<li class="chapter" data-level="14.4.6" data-path="tools.html"><a href="tools.html#find-matches"><i class="fa fa-check"></i><b>14.4.6</b> Find Matches</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="other-types-of-pattern.html"><a href="other-types-of-pattern.html"><i class="fa fa-check"></i><b>14.5</b> Other types of Pattern</a><ul>
+<li class="chapter" data-level="14.5.1" data-path="other-types-of-pattern.html"><a href="other-types-of-pattern.html#exercises-unanswered-7"><i class="fa fa-check"></i><b>14.5.1</b> Exercises (Unanswered)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.6" data-path="other-uses-of-regular-expressions.html"><a href="other-uses-of-regular-expressions.html"><i class="fa fa-check"></i><b>14.6</b> Other uses of regular expressions</a></li>
+<li class="chapter" data-level="14.7" data-path="stringi.html"><a href="stringi.html"><i class="fa fa-check"></i><b>14.7</b> stringi</a><ul>
+<li class="chapter" data-level="14.7.1" data-path="stringi.html"><a href="stringi.html#exercises-3"><i class="fa fa-check"></i><b>14.7.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> Factors</a><ul>
+<li class="chapter" data-level="15.1" data-path="slide-1-4.html"><a href="slide-1-4.html"><i class="fa fa-check"></i><b>15.1</b> Slide 1</a></li>
+<li class="chapter" data-level="15.2" data-path="slide-2-4.html"><a href="slide-2-4.html"><i class="fa fa-check"></i><b>15.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>16</b> Dates and times</a><ul>
+<li class="chapter" data-level="16.1" data-path="slide-1-5.html"><a href="slide-1-5.html"><i class="fa fa-check"></i><b>16.1</b> Slide 1</a></li>
+<li class="chapter" data-level="16.2" data-path="slide-2-5.html"><a href="slide-2-5.html"><i class="fa fa-check"></i><b>16.2</b> Slide 2</a></li>
+</ul></li>
+<li class="part"><span><b>III Program</b></span></li>
+<li class="chapter" data-level="17" data-path="introduction-5.html"><a href="introduction-5.html"><i class="fa fa-check"></i><b>17</b> Introduction</a><ul>
+<li class="chapter" data-level="17.1" data-path="slide-1-6.html"><a href="slide-1-6.html"><i class="fa fa-check"></i><b>17.1</b> Slide 1</a></li>
+<li class="chapter" data-level="17.2" data-path="slide-2-6.html"><a href="slide-2-6.html"><i class="fa fa-check"></i><b>17.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>18</b> Pipes</a><ul>
+<li class="chapter" data-level="18.1" data-path="slide-1-7.html"><a href="slide-1-7.html"><i class="fa fa-check"></i><b>18.1</b> Slide 1</a></li>
+<li class="chapter" data-level="18.2" data-path="slide-2-7.html"><a href="slide-2-7.html"><i class="fa fa-check"></i><b>18.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="functions-2.html"><a href="functions-2.html"><i class="fa fa-check"></i><b>19</b> Functions</a><ul>
+<li class="chapter" data-level="19.1" data-path="slide-1-8.html"><a href="slide-1-8.html"><i class="fa fa-check"></i><b>19.1</b> Slide 1</a></li>
+<li class="chapter" data-level="19.2" data-path="slide-2-8.html"><a href="slide-2-8.html"><i class="fa fa-check"></i><b>19.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>20</b> Vectors</a><ul>
+<li class="chapter" data-level="20.1" data-path="slide-1-9.html"><a href="slide-1-9.html"><i class="fa fa-check"></i><b>20.1</b> Slide 1</a></li>
+<li class="chapter" data-level="20.2" data-path="slide-2-9.html"><a href="slide-2-9.html"><i class="fa fa-check"></i><b>20.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>21</b> Iteration</a><ul>
+<li class="chapter" data-level="21.1" data-path="slide-1-10.html"><a href="slide-1-10.html"><i class="fa fa-check"></i><b>21.1</b> Slide 1</a></li>
+<li class="chapter" data-level="21.2" data-path="slide-2-10.html"><a href="slide-2-10.html"><i class="fa fa-check"></i><b>21.2</b> Slide 2</a></li>
+</ul></li>
+<li class="part"><span><b>IV Model</b></span></li>
+<li class="chapter" data-level="22" data-path="introduction-6.html"><a href="introduction-6.html"><i class="fa fa-check"></i><b>22</b> Introduction</a><ul>
+<li class="chapter" data-level="22.1" data-path="slide-1-11.html"><a href="slide-1-11.html"><i class="fa fa-check"></i><b>22.1</b> Slide 1</a></li>
+<li class="chapter" data-level="22.2" data-path="slide-2-11.html"><a href="slide-2-11.html"><i class="fa fa-check"></i><b>22.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="model-basics.html"><a href="model-basics.html"><i class="fa fa-check"></i><b>23</b> Model basics</a><ul>
+<li class="chapter" data-level="23.1" data-path="slide-1-12.html"><a href="slide-1-12.html"><i class="fa fa-check"></i><b>23.1</b> Slide 1</a></li>
+<li class="chapter" data-level="23.2" data-path="slide-2-12.html"><a href="slide-2-12.html"><i class="fa fa-check"></i><b>23.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="model-building.html"><a href="model-building.html"><i class="fa fa-check"></i><b>24</b> Model building</a><ul>
+<li class="chapter" data-level="24.1" data-path="slide-1-13.html"><a href="slide-1-13.html"><i class="fa fa-check"></i><b>24.1</b> Slide 1</a></li>
+<li class="chapter" data-level="24.2" data-path="slide-2-13.html"><a href="slide-2-13.html"><i class="fa fa-check"></i><b>24.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="many-models.html"><a href="many-models.html"><i class="fa fa-check"></i><b>25</b> Many models</a><ul>
+<li class="chapter" data-level="25.1" data-path="slide-1-14.html"><a href="slide-1-14.html"><i class="fa fa-check"></i><b>25.1</b> Slide 1</a></li>
+<li class="chapter" data-level="25.2" data-path="slide-2-14.html"><a href="slide-2-14.html"><i class="fa fa-check"></i><b>25.2</b> Slide 2</a></li>
+</ul></li>
+<li class="part"><span><b>V Communicate</b></span></li>
+<li class="chapter" data-level="26" data-path="introduction-7.html"><a href="introduction-7.html"><i class="fa fa-check"></i><b>26</b> Introduction</a><ul>
+<li class="chapter" data-level="26.1" data-path="slide-1-15.html"><a href="slide-1-15.html"><i class="fa fa-check"></i><b>26.1</b> Slide 1</a></li>
+<li class="chapter" data-level="26.2" data-path="slide-2-15.html"><a href="slide-2-15.html"><i class="fa fa-check"></i><b>26.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>27</b> R Markdown</a><ul>
+<li class="chapter" data-level="27.1" data-path="slide-1-16.html"><a href="slide-1-16.html"><i class="fa fa-check"></i><b>27.1</b> Slide 1</a></li>
+<li class="chapter" data-level="27.2" data-path="slide-2-16.html"><a href="slide-2-16.html"><i class="fa fa-check"></i><b>27.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>28</b> Graphics for communication</a><ul>
+<li class="chapter" data-level="28.1" data-path="slide-1-17.html"><a href="slide-1-17.html"><i class="fa fa-check"></i><b>28.1</b> Slide 1</a></li>
+<li class="chapter" data-level="28.2" data-path="slide-2-17.html"><a href="slide-2-17.html"><i class="fa fa-check"></i><b>28.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="r-markdown-formats.html"><a href="r-markdown-formats.html"><i class="fa fa-check"></i><b>29</b> R Markdown formats</a><ul>
+<li class="chapter" data-level="29.1" data-path="slide-1-18.html"><a href="slide-1-18.html"><i class="fa fa-check"></i><b>29.1</b> Slide 1</a></li>
+<li class="chapter" data-level="29.2" data-path="slide-2-18.html"><a href="slide-2-18.html"><i class="fa fa-check"></i><b>29.2</b> Slide 2</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="r-markdown-workflow.html"><a href="r-markdown-workflow.html"><i class="fa fa-check"></i><b>30</b> R Markdown workflow</a><ul>
+<li class="chapter" data-level="30.1" data-path="slide-1-19.html"><a href="slide-1-19.html"><i class="fa fa-check"></i><b>30.1</b> Slide 1</a></li>
+<li class="chapter" data-level="30.2" data-path="slide-2-19.html"><a href="slide-2-19.html"><i class="fa fa-check"></i><b>30.2</b> Slide 2</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for Data Science Book Club</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="string-basics" class="section level2">
+<h2><span class="header-section-number">14.2</span> String Basics</h2>
+<ul>
+<li>You can create strings with either single quotes <code>'</code> or with double quotes <code>"</code>. The computer doesn’t care.
+<ul>
+<li>However, which ever you choose, just stick with the format throughout your script.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="string-basics.html#cb227-1"></a>string1 &lt;-<span class="st"> &#39;This is also a string, but uses single quotes&#39;</span></span>
+<span id="cb227-2"><a href="string-basics.html#cb227-2"></a>string2 &lt;-<span class="st"> &quot;This is a string with double quotes&quot;</span></span></code></pre></div>
+<p>During scripting, if you do not close a string but try to start a new line you will see the <code>+</code> line entry. But how do you quit so you can add the closing quote? Just hit the escape key.</p>
+<pre class="code"><code>&quot;This is a string, but I forgot to close the quote
+
+
+Help, I&#39;m stuck! (Hit the escape key)</code></pre>
+<p>One of the more tricky things to remember when using regular expressions is the <code>\</code> backslash when you literally want to use a special character in a search.</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="string-basics.html#cb229-1"></a>doublequote &lt;-<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span> <span class="co"># or &#39;&quot;&#39;</span></span>
+<span id="cb229-2"><a href="string-basics.html#cb229-2"></a>singlequote &lt;-<span class="st"> &#39;</span><span class="ch">\&#39;</span><span class="st">&#39;</span> <span class="co"># or &quot;&#39;&quot;</span></span>
+<span id="cb229-3"><a href="string-basics.html#cb229-3"></a><span class="kw">print</span>(doublequote)</span></code></pre></div>
+<pre><code>## [1] &quot;\&quot;&quot;</code></pre>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="string-basics.html#cb231-1"></a><span class="kw">print</span>(singlequote)</span></code></pre></div>
+<pre><code>## [1] &quot;&#39;&quot;</code></pre>
+<p>Evaluating the above makes you question if my environment is correct. Yes it is. By printing to the screen, we are treating the output as a string…confused? To execute this as a regular expression however, we have to use <code>writeLines()</code>.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="string-basics.html#cb233-1"></a>doublequote &lt;-<span class="st"> &quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span> <span class="co"># or &#39;&quot;&#39;</span></span>
+<span id="cb233-2"><a href="string-basics.html#cb233-2"></a>singlequote &lt;-<span class="st"> &#39;</span><span class="ch">\&#39;</span><span class="st">&#39;</span> <span class="co"># or &quot;&#39;&quot;</span></span>
+<span id="cb233-3"><a href="string-basics.html#cb233-3"></a><span class="kw">writeLines</span>(doublequote)</span></code></pre></div>
+<pre><code>## &quot;</code></pre>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="string-basics.html#cb235-1"></a><span class="kw">writeLines</span>(singlequote)</span></code></pre></div>
+<pre><code>## &#39;</code></pre>
+<p>There are a handful of other special characters. The most common are <code>\n</code>, newline, and <code>\t</code>, tab, but you can see the complete list by requesting help on <code>: ?'"'</code>, or <code>?"'"</code>. You’ll also sometimes see strings like <code>\u00b5</code>, this is a way of writing non-English characters that works on all platforms:</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="string-basics.html#cb237-1"></a>x &lt;-<span class="st"> &quot;\u00b5&quot;</span></span>
+<span id="cb237-2"><a href="string-basics.html#cb237-2"></a>x</span></code></pre></div>
+<pre><code>## [1] &quot;µ&quot;</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="string-basics.html#cb239-1"></a>y &lt;-<span class="st"> &quot;\U1F44D&quot;</span></span>
+<span id="cb239-2"><a href="string-basics.html#cb239-2"></a>y</span></code></pre></div>
+<pre><code>## [1] &quot;👍&quot;</code></pre>
+<p>Another way to think “non-English” would be to say these are <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">Unicode</a> values.</p>
+<blockquote>
+<p>NOTE: The list is quite extensive (~144K). A better way to state the comment, unicode is inteded to represent the worlds diverse linguistic and lexiconal attributes!</p>
+</blockquote>
+<p>Multiple strings are often stored in a character vector, which you can create with c():</p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="string-basics.html#cb241-1"></a><span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>, <span class="st">&quot;three&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;one&quot;   &quot;two&quot;   &quot;three&quot;</code></pre>
+<div id="string-length" class="section level3">
+<h3><span class="header-section-number">14.2.1</span> String Length</h3>
+<p>Base R has many functions that can work with String Length. Unfortunetely, these can all be a bit different. Therefore, we are going to use the <code>{stringr}</code> package to maintain our semantics and work within one package…<code>{tidyverse}</code>!</p>
+<ul>
+<li>All string functions in <code>{stringr}</code> start with the root <code>str_</code> making use of the package quite intuitive.</li>
+</ul>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="string-basics.html#cb243-1"></a><span class="kw">str_length</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;R for Data Science&quot;</span>, <span class="ot">NA</span>))</span></code></pre></div>
+<pre><code>## [1]  1 18 NA</code></pre>
+<p>Using the RStudio IDE makes using the autocomplete feature quiet simple
+<img src="images/stringr-autocomplete.png" alt="Stringr Autocomplete" />
+This is a excellent way to quickly call on a particular <code>{stringr}</code> function!</p>
+</div>
+<div id="combining-strings" class="section level3">
+<h3><span class="header-section-number">14.2.2</span> Combining Strings</h3>
+<p>To combine two or more strings, use <code>str_c()</code></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="string-basics.html#cb245-1"></a><span class="kw">str_c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;xy&quot;</code></pre>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="string-basics.html#cb247-1"></a><span class="kw">str_c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;xyz&quot;</code></pre>
+<p>You can also add the <code>sep</code> argument to control how the strings are seperated.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="string-basics.html#cb249-1"></a><span class="kw">str_c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;x, y&quot;</code></pre>
+<p>Like many other functions in R, if you have missing data, you can add <code>NA</code>.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="string-basics.html#cb251-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="ot">NA</span>)</span>
+<span id="cb251-2"><a href="string-basics.html#cb251-2"></a><span class="kw">str_c</span>(<span class="st">&quot;|-&quot;</span>, x, <span class="st">&quot;-|&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;|-abc-|&quot; NA</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="string-basics.html#cb253-1"></a><span class="kw">str_c</span>(<span class="st">&quot;|-&quot;</span>, <span class="kw">str_replace_na</span>(x), <span class="st">&quot;-|&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;|-abc-|&quot; &quot;|-NA-|&quot;</code></pre>
+<p>As shown above, <code>str_c()</code> is vectorised, and it automatically recycles shorter vectors to the same length as the longest:</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="string-basics.html#cb255-1"></a><span class="kw">str_c</span>(<span class="st">&quot;prefix-&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="st">&quot;-suffix&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;prefix-a-suffix&quot; &quot;prefix-b-suffix&quot; &quot;prefix-c-suffix&quot;</code></pre>
+<blockquote>
+<p>I’m unsure if the use of <em>recycle</em> is accurate in the above statement. Another way to view this is a vector list inside a vector list. As the output is sent to the screen, the function acts like a for-loop inside a for-loop where each pass of the inside combination is iterated as combined with the outside combination iteration.</p>
+</blockquote>
+<p>Objects of length 0 are silently dropped. This is particularly useful in conjunction with <code>if</code>:</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="string-basics.html#cb257-1"></a>name &lt;-<span class="st"> &quot;Ryan&quot;</span></span>
+<span id="cb257-2"><a href="string-basics.html#cb257-2"></a>time_of_day &lt;-<span class="st"> &quot;afternon&quot;</span></span>
+<span id="cb257-3"><a href="string-basics.html#cb257-3"></a>birthday &lt;-<span class="st"> </span><span class="ot">FALSE</span></span>
+<span id="cb257-4"><a href="string-basics.html#cb257-4"></a></span>
+<span id="cb257-5"><a href="string-basics.html#cb257-5"></a><span class="kw">str_c</span>(</span>
+<span id="cb257-6"><a href="string-basics.html#cb257-6"></a>  <span class="st">&quot;Good &quot;</span>, time_of_day, <span class="st">&quot; &quot;</span>, name,</span>
+<span id="cb257-7"><a href="string-basics.html#cb257-7"></a>  <span class="cf">if</span> (birthday) <span class="st">&quot; and HAPPY BIRTHDAY&quot;</span>,</span>
+<span id="cb257-8"><a href="string-basics.html#cb257-8"></a>  <span class="st">&quot;.&quot;</span></span>
+<span id="cb257-9"><a href="string-basics.html#cb257-9"></a>)</span></code></pre></div>
+<pre><code>## [1] &quot;Good afternon Ryan.&quot;</code></pre>
+<blockquote>
+<p>The above example is written a bit confusing. The object <code>birthday</code> is passed as a boolean value of <em>FALSE</em> and therefore will never evaluate <em>TRUE</em>, making the <code>if</code> statement overhead. Maybe a better way to write the <code>if</code> statement would be to write an argument like <code>sys.date == birthday</code> in which case, if the system date of the computer matches the object <code>birthday</code>, you would get extra text.</p>
+</blockquote>
+<p>Finally, if you would like to collapse a vector of strings into a single string, use the <code>collapse</code> argument.</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="string-basics.html#cb259-1"></a><span class="kw">str_c</span>(<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="string-basics.html#cb261-1"></a><span class="kw">str_c</span>(<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">collapse =</span> <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;x, y, z&quot;</code></pre>
+</div>
+<div id="subsetting-strings" class="section level3">
+<h3><span class="header-section-number">14.2.3</span> Subsetting Strings</h3>
+<p>You can extract parts of a string using <code>str_sub()</code>. As well as the string, <code>str_sub()</code> takes start and end arguments which give the (inclusive) position of the substring:</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="string-basics.html#cb263-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Apple&quot;</span>, <span class="st">&quot;Banana&quot;</span>, <span class="st">&quot;Pear&quot;</span>)</span>
+<span id="cb263-2"><a href="string-basics.html#cb263-2"></a><span class="kw">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;App&quot; &quot;Ban&quot; &quot;Pea&quot;</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="string-basics.html#cb265-1"></a><span class="co"># negative numbers count backwards from end</span></span>
+<span id="cb265-2"><a href="string-basics.html#cb265-2"></a><span class="kw">str_sub</span>(x, <span class="dv">-3</span>, <span class="dv">-1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;ple&quot; &quot;ana&quot; &quot;ear&quot;</code></pre>
+<p>Note that str_sub() won’t fail if the string is too short: it will just return as much as possible:</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="string-basics.html#cb267-1"></a><span class="kw">str_sub</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">1</span>, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<p>You can also use the assignment form of <code>str_sub()</code> to modify strings:</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="string-basics.html#cb269-1"></a><span class="kw">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">1</span>) &lt;-<span class="st"> </span><span class="kw">str_to_lower</span>(<span class="kw">str_sub</span>(x, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb269-2"><a href="string-basics.html#cb269-2"></a>x</span></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;  &quot;banana&quot; &quot;pear&quot;</code></pre>
+</div>
+<div id="locales" class="section level3">
+<h3><span class="header-section-number">14.2.4</span> Locales</h3>
+<ul>
+<li>Alternatives to <code>str_to_lower()</code> is <code>srr_to_upper()</code> and <code>str_to_title()</code>.</li>
+<li>Changing case is a bit more complicated then it first appears</li>
+<li>Different languages have different rules for changing case</li>
+</ul>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="string-basics.html#cb271-1"></a><span class="co"># Turkish has two i&#39;s: with and without a dot, and it</span></span>
+<span id="cb271-2"><a href="string-basics.html#cb271-2"></a><span class="co"># has a different rule for capitalising them:</span></span>
+<span id="cb271-3"><a href="string-basics.html#cb271-3"></a><span class="kw">str_to_upper</span>(<span class="kw">c</span>(<span class="st">&quot;i&quot;</span>, <span class="st">&quot;ı&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;I&quot; &quot;I&quot;</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="string-basics.html#cb273-1"></a><span class="kw">str_to_upper</span>(<span class="kw">c</span>(<span class="st">&quot;i&quot;</span>, <span class="st">&quot;ı&quot;</span>), <span class="dt">locale =</span> <span class="st">&quot;tr&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;İ&quot; &quot;I&quot;</code></pre>
+<ul>
+<li><p>Locale is specified as a ISO 639 language code, see <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">Wikipedia</a></p></li>
+<li><p>Sorting and Order are also effected by Locale</p>
+<ul>
+<li>Base R only applies the system Locale</li>
+<li>Using <code>{stringr}</code> adds a <code>local=</code> argument</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="string-basics.html#cb275-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;eggplant&quot;</span>, <span class="st">&quot;banana&quot;</span>)</span>
+<span id="cb275-2"><a href="string-basics.html#cb275-2"></a></span>
+<span id="cb275-3"><a href="string-basics.html#cb275-3"></a><span class="kw">str_sort</span>(x, <span class="dt">locale =</span> <span class="st">&quot;en&quot;</span>)  <span class="co"># English</span></span></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;    &quot;banana&quot;   &quot;eggplant&quot;</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="string-basics.html#cb277-1"></a><span class="kw">str_sort</span>(x, <span class="dt">locale =</span> <span class="st">&quot;haw&quot;</span>) <span class="co"># Hawaiian</span></span></code></pre></div>
+<pre><code>## [1] &quot;apple&quot;    &quot;eggplant&quot; &quot;banana&quot;</code></pre>
+</div>
+<div id="exercises-1" class="section level3">
+<h3><span class="header-section-number">14.2.5</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>In code that doesn’t use stringr, you’ll often see paste() and paste0(). What’s the difference between the two functions? What stringr function are they equivalent to? How do the functions differ in their handling of NA?</li>
+</ol>
+<blockquote>
+<p><code>paste()</code> converts arguments to character strings and concatenates them. <code>paste0()</code> is the same function but slightly more efficent. The <code>{stringr}</code> they are equivelent to are <code>str_c()</code>. The major difference is the use of <code>as.character()</code> at its base versus <code>{stingr}</code>. The <code>paste()</code> and <code>paste0()</code> changes NA values to “NA”.</p>
+</blockquote>
+<ol start="2" style="list-style-type: decimal">
+<li>In your own words, describe the difference between the sep and collapse arguments to str_c().</li>
+</ol>
+<blockquote>
+<p>The <code>sep</code> argument treats each combined string as its own output. Whereas the <code>collapse</code> aregument creates one large string object.</p>
+</blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li>Use str_length() and str_sub() to extract the middle character from a string. What will you do if the string has an even number of characters?</li>
+</ol>
+<blockquote>
+<p><code>str_length()</code> provides the quantity of characters in a string. <code>str_sub()</code> picks out the beginning and end of out of a vector. If the string has an even number of characters, it will only provide the smaller of the string.</p>
+</blockquote>
+<ol start="4" style="list-style-type: decimal">
+<li>What does str_wrap() do? When might you want to use it?</li>
+</ol>
+<blockquote>
+<p><code>str_wrap()</code> uses the Knuth-Plass paragraph wrapping algorithm. <a href="http://www.eprg.org/G53DOC/pdfs/knuth-plass-breaking.pdf">Knuth-Plass algorithm</a>. This is important when using typesetting services like LaTeX.</p>
+</blockquote>
+<ol start="5" style="list-style-type: decimal">
+<li>What does str_trim() do? What’s the opposite of str_trim()?</li>
+</ol>
+<blockquote>
+<p><code>str_trim()</code> removes extra white space between vectorized strings. <code>str_pad()</code> is the opposite which puts characters back into the string.</p>
+</blockquote>
+<ol start="6" style="list-style-type: decimal">
+<li>Write a function that turns (e.g.) a vector c(“a”, “b”, “c”) into the string a, b, and c. Think carefully about what it should do if given a vector of length 0, 1, or 2.</li>
+</ol>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="string-basics.html#cb279-1"></a>z &lt;-<span class="st"> </span><span class="kw">str_c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;, &quot;</span>)</span>
+<span id="cb279-2"><a href="string-basics.html#cb279-2"></a>z</span></code></pre></div>
+<pre><code>## [1] &quot;a, b, c&quot;</code></pre>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="string-basics.html#cb281-1"></a><span class="co"># Unsure on the second half of hte question.</span></span></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matching-patterns-with-regular-expressions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/r4ds/bookclub-r4ds/edit/main/14-strings.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
