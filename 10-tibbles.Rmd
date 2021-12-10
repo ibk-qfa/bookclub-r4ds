@@ -6,11 +6,41 @@
 - Compare and contrast **tibbles** with base R **data.frames**.
 - **Convert a tibble** back to a data.frame, when needed.
 
-## Slide 1
+#What are tibbles?
+They are part of the "tidyverse" package
+Tibbles are data frames, but they tweak some older behaviors to make life a little easier
+However, it does less than dataframe as it never changes the names of variables, and it never creates row names
+Tibbles are designed so that you don’t accidentally overwhelm your console when you print large data frames
+It’s difficult to change base R without breaking existing code, so most innovation occurs in packages
+Use vignette("tibble") to learn more about tibbles
+Use as.data.frame to turn a tibble back to a data frame
 
-Slide contents. 
-Keep it short and slide-like!
 
+#Creating tibbles
+You can 
+1. coerce a dataframe to a tibble using as.tibble()
+2. from individual vectors with tibble(), here it allows you use variables you just created
+3. with tribble(), short for transposed tibble. It is customized for data entry in code: column headings are defined by formulas (i.e., they start with ~), and entries are separated by commas
+
+#Compare and contrast **tibbles** with base R **data.frames**
+There are two main differences in the usage of a tibble versus a classic data.frame: printing and subsetting
+
+PRINTING
+Tibble shows only the first 10 rows, and all the columns that fit on screen which makes it much easier to work with large data
+If you want more output:
+Dataframe: Print the dataframe and control the number of rows and width of the display
+Tibble: You can use options
+options(tibble.print_max = n, tibble.print_min = m) which means if more than m rows, print only n rows
+OR
+Use options(dplyr.print_min = Inf) to always show all rows.
+OR
+Use options(tibble.width = Inf) to always print all columns, regardless of the width of the screen.
+For a full list of options available, use package?tibble
+
+SUBSETTING
+We can use $ and [[
+The [[ can extract by name or position; 
+$ only extracts by name but is a little less typing
 ## Slide 2
 
 Slide contents.
